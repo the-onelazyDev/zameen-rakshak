@@ -7,6 +7,7 @@ const { queryLandRecord } = require('./scraper/upBhulekhScraper');
 const { runNightlySurveillance } = require('./cron/nightlyPoller');
 const { handleIncomingWhatsAppMessage } = require('./bot/whatsappSimulator');
 const { generateUpiIntentLink } = require('./payments/upiLinkGenerator');
+const { sendNewOrderAlert } = require('./notifications/emailNotifier');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,13 +29,19 @@ app.use('/petitions', express.static(path.join(__dirname, '../data/petitions')))
 // --- ORDERS API (For Concierge Model) ---
 app.post('/api/orders/create', (req, res) => {
   try {
-    const { customerName, phone, district, tehsil, village, khasraNo, plan, amount, utr, notes } = req.body;
+    const { customerName, phone, email, district, tehsil, village, khasraNo, plan, amount, utr, notes } = req.body;
     if (!phone || !khasraNo) {
       return res.status(400).json({ success: false, error: 'Phone and Khasra No are required' });
     }
     const order = orderStore.createOrder({
-      customerName, phone, district, tehsil, village, khasraNo, plan, amount, utr, notes
+      customerName, phone, email, district, tehsil, village, khasraNo, plan, amount, utr, notes: notes || email
     });
+
+    // Send instant email notification to amitcse21@gmail.com
+    sendNewOrderAlert({ ...order, email: email || notes }).catch(err => {
+      console.error('Failed to dispatch order email alert:', err.message);
+    });
+
     res.json({ success: true, order });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });

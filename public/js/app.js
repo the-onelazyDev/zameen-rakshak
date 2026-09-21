@@ -98,6 +98,7 @@ async function handleEnrollmentSubmit(e) {
       body: JSON.stringify({
         customerName: applicantName,
         phone: applicantPhone,
+        email: applicantEmail,
         district: landDistrict,
         tehsil: landTehsil,
         village: landVillage,

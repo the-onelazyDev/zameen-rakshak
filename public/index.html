@@ -412,10 +412,13 @@
                     </div>
 
                     <div style="margin-top:0.75rem;">
-                      <label style="font-size:0.82rem; font-weight:700; display:block; margin-bottom:0.25rem; color:var(--gov-navy-dark);">
-                        UPI UTR / Reference No. (भुगतान के बाद मिला 12-अंकों का नंबर):
+                      <label style="font-size:0.85rem; font-weight:700; display:block; margin-bottom:0.25rem; color:var(--gov-navy-dark);">
+                        UPI UTR / Reference No. (भुगतान के बाद मिला 12-अंकों का नंबर) <span style="color:var(--gov-crimson);">*</span>:
                       </label>
-                      <input type="text" id="paymentUtr" class="form-input-gov" placeholder="उदा. 423456789012" style="max-width:320px;">
+                      <input type="text" id="paymentUtr" class="form-input-gov" placeholder="उदा. 423456789012 (12-अंकों का UTR)" maxlength="24" style="max-width:320px; font-weight:600; letter-spacing:0.04em;">
+                      <div style="font-size:0.78rem; color:#b45309; margin-top:0.25rem; font-weight:600;">
+                        ⚠️ ध्यान दें: सही UTR दर्ज करने पर ही बैंक मिलान कर आपकी 24/7 निगरानी सेवा सक्रिय की जाएगी।
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -443,13 +446,13 @@
 
             </form>
 
-            <!-- 10. Official Acknowledgment Receipt (Appears on submit) -->
+            <!-- 10. Official Provisional Acknowledgment Receipt (Appears on submit) -->
             <div id="officialReceiptCard" class="receipt-wrapper">
               <div class="receipt-header">
                 <img src="/assets/govt_logo.png" alt="Emblem" style="width:64px; height:64px; margin-bottom:0.5rem;">
-                <h3>ज़मीन सेवा केंद्र — आधिकारिक पंजीकरण पावती</h3>
-                <div style="font-size:0.85rem; color:var(--gov-green-dark); font-weight:700; margin-top:0.25rem;">
-                  ✓ SUCCESS: 24/7 भूलेख निगरानी सक्रियता अनुरोध दर्ज (ENROLLMENT RECORDED)
+                <h3>ज़मीन सेवा केंद्र — आधिकारिक अनंतिम पंजीकरण पावती</h3>
+                <div style="font-size:0.85rem; color:#b45309; font-weight:700; margin-top:0.25rem;">
+                  ⏳ PROVISIONAL ACKNOWLEDGMENT: अनंतिम पंजीकरण दर्ज — UTR सत्यापन प्रतीक्षित
                 </div>
               </div>
 
@@ -478,15 +481,29 @@
                   <strong>व्हाट्सएप अलर्ट नंबर:</strong>
                   <span id="rcptPhone">+91 98765 43210</span>
                 </div>
+                <div class="receipt-item">
+                  <strong>दर्ज UPI UTR / संदर्भ संख्या:</strong>
+                  <span id="rcptUtr" style="color:#b45309; font-weight:700;">423456789012</span>
+                </div>
+                <div class="receipt-item">
+                  <strong>सक्रियता स्थिति (Status):</strong>
+                  <span style="color:#d97706; font-weight:700;">⏳ UTR सत्यापन प्रक्रियाधीन</span>
+                </div>
               </div>
 
-              <div style="background:#eaf6ea; border:1px solid #bbf7d0; border-radius:4px; padding:1rem; font-size:0.88rem; color:#14532d; line-height:1.6; margin-bottom:1.5rem;">
-                <strong>सत्यापन स्थिति (Status):</strong> आपके गाटा की सरकारी खतौनी का बेसलाइन स्नैपशॉट यूपी भूलेख से सुरक्षित कर लिया गया है। हर रात 2:00 बजे स्वचालित निगरानी जारी रहेगी तथा किसी भी अनाधिकृत आवेदन पर आपके व्हाट्सएप पर तत्काल सूचना भेजी जाएगी।
+              <div style="background:#fffbeb; border:1px solid #fde68a; border-left: 5px solid #d97706; border-radius:4px; padding:1.15rem; font-size:0.9rem; color:#92400e; line-height:1.6; margin-bottom:1.5rem;">
+                <strong style="font-size:0.95rem; color:#b45309; display:block; margin-bottom:0.35rem;">
+                  ⏳ सत्यापन प्रक्रियाधीन (Bank Verification in Progress):
+                </strong>
+                आपका भूमि पंजीकरण विवरण सफलतापूर्वक प्राप्त हो गया है। हमारे राजस्व एवं लेखा दल द्वारा आपके दर्ज <strong>UPI UTR No.</strong> के बैंक सत्यापन के उपरांत आपकी <strong>24/7 निगरानी सेवा सक्रिय (Active)</strong> कर दी जाएगी।
+                <div style="margin-top:0.6rem; color:#78350f; font-weight:700; background:#fef3c7; padding:0.6rem 0.85rem; border-radius:4px;">
+                  📲 सत्यापन पूर्ण होते ही अंतिम आधिकारिक मुहरबंद रसीद (Official Stamped Receipt) एवं प्रथम खतौनी विश्लेषण रिपोर्ट आपके व्हाट्सएप नंबर पर भेज दी जाएगी।
+                </div>
               </div>
 
               <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
                 <button onclick="window.print();" class="btn-gov-secondary" style="padding:0.6rem 1.2rem;">
-                  🖨️ पावती प्रिंट करें (Print Receipt)
+                  🖨️ अनंतिम पावती प्रिंट करें (Print Provisional Receipt)
                 </button>
                 <button onclick="document.getElementById('officialReceiptCard').style.display='none'; document.getElementById('enrollmentForm').style.display='block';" class="btn-gov-primary" style="padding:0.6rem 1.2rem;">
                   नया पंजीकरण करें (New Enrollment)

@@ -82,6 +82,16 @@ async function handleEnrollmentSubmit(e) {
     return;
   }
 
+  if (activePlan === 'RESIDENT_2999' && !utr) {
+    alert('कृपया QR कोड स्कैन करके ₹2,999 का भुगतान करें और बैंक/UPI ऐप (GPay, PhonePe, Paytm) से प्राप्त 12-अंकों का UPI UTR / Transaction No. यहाँ दर्ज करें।');
+    const utrInput = document.getElementById('paymentUtr');
+    if (utrInput) {
+      utrInput.focus();
+      utrInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return;
+  }
+
   const submitBtn = document.getElementById('submitEnrollBtn');
   if (submitBtn) {
     submitBtn.disabled = true;
@@ -113,7 +123,7 @@ async function handleEnrollmentSubmit(e) {
     const data = await response.json();
 
     if (data.success && data.order) {
-      // Display Official Government Receipt
+      // Display Official Provisional Receipt
       const order = data.order;
       document.getElementById('rcptOrderId').textContent = order.id;
       document.getElementById('rcptName').textContent = order.customer_name;
@@ -123,6 +133,10 @@ async function handleEnrollmentSubmit(e) {
         ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
         : '$120 / Year (NRI Overseas Land Guard)';
       document.getElementById('rcptPhone').textContent = order.phone;
+      const rcptUtr = document.getElementById('rcptUtr');
+      if (rcptUtr) {
+        rcptUtr.textContent = order.utr || utr || (activePlan === 'RESIDENT_2999' ? 'Pending Bank Verification' : 'NRI Overseas Verification');
+      }
 
       document.getElementById('enrollmentForm').style.display = 'none';
       const receiptCard = document.getElementById('officialReceiptCard');
@@ -143,6 +157,10 @@ async function handleEnrollmentSubmit(e) {
       ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
       : '$120 / Year (NRI Overseas Land Guard)';
     document.getElementById('rcptPhone').textContent = applicantPhone;
+    const rcptUtr = document.getElementById('rcptUtr');
+    if (rcptUtr) {
+      rcptUtr.textContent = utr || (activePlan === 'RESIDENT_2999' ? 'Pending Bank Verification' : 'NRI Overseas Verification');
+    }
 
     document.getElementById('enrollmentForm').style.display = 'none';
     const receiptCard = document.getElementById('officialReceiptCard');

@@ -1,0 +1,588 @@
+{
+  "users": [
+    {
+      "id": "usr_1789971521619_j07x",
+      "full_name": "Rameshwar Dayal",
+      "phone_number": "+919876543210",
+      "plan_tier": "DOMESTIC_ANNUAL",
+      "is_active": true,
+      "created_at": "2026-09-21T06:18:41.619Z",
+      "activated_at": "2026-09-21T06:18:41.667Z"
+    },
+    {
+      "id": "usr_1789971586455_zug9",
+      "full_name": "Rameshwar Dayal",
+      "phone_number": "+919876543210",
+      "plan_tier": "DOMESTIC_ANNUAL",
+      "is_active": true,
+      "created_at": "2026-09-21T06:19:46.455Z",
+      "activated_at": "2026-09-21T06:19:46.483Z"
+    },
+    {
+      "id": "usr_1789971974667_yrpj",
+      "full_name": "Rameshwar Dayal",
+      "phone_number": "+919876543210",
+      "plan_tier": "DOMESTIC_ANNUAL",
+      "is_active": true,
+      "created_at": "2026-09-21T06:26:14.667Z",
+      "activated_at": "2026-09-21T06:26:14.705Z"
+    }
+  ],
+  "parcels": [
+    {
+      "id": "pcl_1789971521651_c8kn",
+      "user_id": "usr_1789971521619_j07x",
+      "state": "UTTAR_PRADESH",
+      "district_name": "GORAKHPUR",
+      "tehsil_name": "CHAURI CHAURA",
+      "village_name": "RAMPUR",
+      "khasra_no": "241",
+      "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+      "baseline_snapshot": {
+        "source": "UP_BHULEKH_DILRMP_PORTAL",
+        "status": "VERIFIED",
+        "fetched_at": "2026-09-21T06:18:41.617Z",
+        "parcel_details": {
+          "state": "UTTAR_PRADESH",
+          "district": "GORAKHPUR",
+          "tehsil": "CHAURI CHAURA",
+          "village": "RAMPUR",
+          "khasra_no": "241",
+          "khata_number": "00723",
+          "fasli_year": "1428-1433 Fasli (2021-2026)",
+          "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+          "land_type": "Bhoomidhari with Transferable Rights (Class 1-A)"
+        },
+        "recorded_owners": [
+          {
+            "name": "Rameshwar Dayal",
+            "father_name": "Late Ram Dulare",
+            "share_ratio": "1/1 (Full Ownership)",
+            "share_area": "0.4210 Hectare",
+            "residence": "RAMPUR"
+          }
+        ],
+        "remarks_and_encumbrances": {
+          "active_loans": "None (Nir-Rin / Clean)",
+          "court_stays": "None",
+          "pending_mutations": "Zero Active Dakhil-Kharij Cases",
+          "notes": "No encumbrance found. Property is free from statutory liabilities."
+        },
+        "integrity_score": "GREEN_SAFE"
+      },
+      "latest_snapshot": {
+        "source": "UP_BHULEKH_DILRMP_PORTAL",
+        "status": "VERIFIED",
+        "fetched_at": "2026-09-21T07:05:00.774Z",
+        "parcel_details": {
+          "state": "UTTAR_PRADESH",
+          "district": "GORAKHPUR",
+          "tehsil": "CHAURI CHAURA",
+          "village": "RAMPUR",
+          "khasra_no": "241",
+          "khata_number": "00723",
+          "fasli_year": "1428-1433 Fasli (2021-2026)",
+          "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+          "land_type": "Bhoomidhari with Transferable Rights (Class 1-A)"
+        },
+        "recorded_owners": [
+          {
+            "name": "Rameshwar Dayal",
+            "father_name": "Late Ram Dulare",
+            "share_ratio": "1/1 (Full Ownership)",
+            "share_area": "0.4210 Hectare",
+            "residence": "RAMPUR"
+          },
+          {
+            "name": "Suraj Yadav (Unauthorized Claimant)",
+            "father_name": "Unknown",
+            "share_ratio": "1/2",
+            "share_area": "0.2105 Hectare",
+            "residence": "District Town"
+          }
+        ],
+        "remarks_and_encumbrances": {
+          "active_loans": "None (Nir-Rin / Clean)",
+          "court_stays": "None",
+          "pending_mutations": "Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code",
+          "notes": "No encumbrance found. Property is free from statutory liabilities."
+        },
+        "integrity_score": "GREEN_SAFE"
+      },
+      "last_checked_at": "2026-09-21T07:05:00.834Z",
+      "status": "ALERT_PENDING",
+      "created_at": "2026-09-21T06:18:41.651Z"
+    },
+    {
+      "id": "pcl_1789971586467_lvti",
+      "user_id": "usr_1789971586455_zug9",
+      "state": "UTTAR_PRADESH",
+      "district_name": "GORAKHPUR",
+      "tehsil_name": "CHAURI CHAURA",
+      "village_name": "RAMPUR",
+      "khasra_no": "241",
+      "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+      "baseline_snapshot": {
+        "source": "UP_BHULEKH_DILRMP_PORTAL",
+        "status": "VERIFIED",
+        "fetched_at": "2026-09-21T06:19:46.453Z",
+        "parcel_details": {
+          "state": "UTTAR_PRADESH",
+          "district": "GORAKHPUR",
+          "tehsil": "CHAURI CHAURA",
+          "village": "RAMPUR",
+          "khasra_no": "241",
+          "khata_number": "00723",
+          "fasli_year": "1428-1433 Fasli (2021-2026)",
+          "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+          "land_type": "Bhoomidhari with Transferable Rights (Class 1-A)"
+        },
+        "recorded_owners": [
+          {
+            "name": "Rameshwar Dayal",
+            "father_name": "Late Ram Dulare",
+            "share_ratio": "1/1 (Full Ownership)",
+            "share_area": "0.4210 Hectare",
+            "residence": "RAMPUR"
+          }
+        ],
+        "remarks_and_encumbrances": {
+          "active_loans": "None (Nir-Rin / Clean)",
+          "court_stays": "None",
+          "pending_mutations": "Zero Active Dakhil-Kharij Cases",
+          "notes": "No encumbrance found. Property is free from statutory liabilities."
+        },
+        "integrity_score": "GREEN_SAFE"
+      },
+      "latest_snapshot": {
+        "source": "UP_BHULEKH_DILRMP_PORTAL",
+        "status": "VERIFIED",
+        "fetched_at": "2026-09-21T07:05:00.835Z",
+        "parcel_details": {
+          "state": "UTTAR_PRADESH",
+          "district": "GORAKHPUR",
+          "tehsil": "CHAURI CHAURA",
+          "village": "RAMPUR",
+          "khasra_no": "241",
+          "khata_number": "00723",
+          "fasli_year": "1428-1433 Fasli (2021-2026)",
+          "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+          "land_type": "Bhoomidhari with Transferable Rights (Class 1-A)"
+        },
+        "recorded_owners": [
+          {
+            "name": "Rameshwar Dayal",
+            "father_name": "Late Ram Dulare",
+            "share_ratio": "1/1 (Full Ownership)",
+            "share_area": "0.4210 Hectare",
+            "residence": "RAMPUR"
+          },
+          {
+            "name": "Suraj Yadav (Unauthorized Claimant)",
+            "father_name": "Unknown",
+            "share_ratio": "1/2",
+            "share_area": "0.2105 Hectare",
+            "residence": "District Town"
+          }
+        ],
+        "remarks_and_encumbrances": {
+          "active_loans": "None (Nir-Rin / Clean)",
+          "court_stays": "None",
+          "pending_mutations": "Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code",
+          "notes": "No encumbrance found. Property is free from statutory liabilities."
+        },
+        "integrity_score": "GREEN_SAFE"
+      },
+      "last_checked_at": "2026-09-21T07:05:00.885Z",
+      "status": "ALERT_PENDING",
+      "created_at": "2026-09-21T06:19:46.467Z"
+    },
+    {
+      "id": "pcl_1789971974687_ldbk",
+      "user_id": "usr_1789971974667_yrpj",
+      "state": "UTTAR_PRADESH",
+      "district_name": "GORAKHPUR",
+      "tehsil_name": "CHAURI CHAURA",
+      "village_name": "RAMPUR",
+      "khasra_no": "241",
+      "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+      "baseline_snapshot": {
+        "source": "UP_BHULEKH_DILRMP_PORTAL",
+        "status": "VERIFIED",
+        "fetched_at": "2026-09-21T06:26:14.666Z",
+        "parcel_details": {
+          "state": "UTTAR_PRADESH",
+          "district": "GORAKHPUR",
+          "tehsil": "CHAURI CHAURA",
+          "village": "RAMPUR",
+          "khasra_no": "241",
+          "khata_number": "00723",
+          "fasli_year": "1428-1433 Fasli (2021-2026)",
+          "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+          "land_type": "Bhoomidhari with Transferable Rights (Class 1-A)"
+        },
+        "recorded_owners": [
+          {
+            "name": "Rameshwar Dayal",
+            "father_name": "Late Ram Dulare",
+            "share_ratio": "1/1 (Full Ownership)",
+            "share_area": "0.4210 Hectare",
+            "residence": "RAMPUR"
+          }
+        ],
+        "remarks_and_encumbrances": {
+          "active_loans": "None (Nir-Rin / Clean)",
+          "court_stays": "None",
+          "pending_mutations": "Zero Active Dakhil-Kharij Cases",
+          "notes": "No encumbrance found. Property is free from statutory liabilities."
+        },
+        "integrity_score": "GREEN_SAFE"
+      },
+      "latest_snapshot": {
+        "source": "UP_BHULEKH_DILRMP_PORTAL",
+        "status": "VERIFIED",
+        "fetched_at": "2026-09-21T07:05:00.886Z",
+        "parcel_details": {
+          "state": "UTTAR_PRADESH",
+          "district": "GORAKHPUR",
+          "tehsil": "CHAURI CHAURA",
+          "village": "RAMPUR",
+          "khasra_no": "241",
+          "khata_number": "00723",
+          "fasli_year": "1428-1433 Fasli (2021-2026)",
+          "total_area": "0.4210 Hectare (~1.04 Acre / 3.3 Bigha)",
+          "land_type": "Bhoomidhari with Transferable Rights (Class 1-A)"
+        },
+        "recorded_owners": [
+          {
+            "name": "Rameshwar Dayal",
+            "father_name": "Late Ram Dulare",
+            "share_ratio": "1/1 (Full Ownership)",
+            "share_area": "0.4210 Hectare",
+            "residence": "RAMPUR"
+          },
+          {
+            "name": "Suraj Yadav (Unauthorized Claimant)",
+            "father_name": "Unknown",
+            "share_ratio": "1/2",
+            "share_area": "0.2105 Hectare",
+            "residence": "District Town"
+          }
+        ],
+        "remarks_and_encumbrances": {
+          "active_loans": "None (Nir-Rin / Clean)",
+          "court_stays": "None",
+          "pending_mutations": "Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code",
+          "notes": "No encumbrance found. Property is free from statutory liabilities."
+        },
+        "integrity_score": "GREEN_SAFE"
+      },
+      "last_checked_at": "2026-09-21T07:05:00.933Z",
+      "status": "ALERT_PENDING",
+      "created_at": "2026-09-21T06:26:14.687Z"
+    }
+  ],
+  "court_records": [],
+  "alert_logs": [
+    {
+      "id": "alt_1789971521758_iw61",
+      "parcel_id": "pcl_1789971521651_c8kn",
+      "user_id": "usr_1789971521619_j07x",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:18:41.702Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:18:41.702Z"
+        }
+      ],
+      "legal_draft_file": "D:\\aura-makeup-studio\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789971521702.pdf",
+      "created_at": "2026-09-21T06:18:41.758Z"
+    },
+    {
+      "id": "alt_1789971586571_9wsz",
+      "parcel_id": "pcl_1789971521651_c8kn",
+      "user_id": "usr_1789971521619_j07x",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:19:46.535Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:19:46.535Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789971586535.pdf",
+      "created_at": "2026-09-21T06:19:46.571Z"
+    },
+    {
+      "id": "alt_1789971586600_y2v6",
+      "parcel_id": "pcl_1789971586467_lvti",
+      "user_id": "usr_1789971586455_zug9",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:19:46.589Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:19:46.589Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789971586589.pdf",
+      "created_at": "2026-09-21T06:19:46.600Z"
+    },
+    {
+      "id": "alt_1789971974812_rng4",
+      "parcel_id": "pcl_1789971521651_c8kn",
+      "user_id": "usr_1789971521619_j07x",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:26:14.781Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:26:14.781Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789971974781.pdf",
+      "created_at": "2026-09-21T06:26:14.812Z"
+    },
+    {
+      "id": "alt_1789971974842_9m4x",
+      "parcel_id": "pcl_1789971586467_lvti",
+      "user_id": "usr_1789971586455_zug9",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:26:14.831Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:26:14.831Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789971974831.pdf",
+      "created_at": "2026-09-21T06:26:14.842Z"
+    },
+    {
+      "id": "alt_1789971974874_nnbs",
+      "parcel_id": "pcl_1789971974687_ldbk",
+      "user_id": "usr_1789971974667_yrpj",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:26:14.860Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:26:14.860Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789971974860.pdf",
+      "created_at": "2026-09-21T06:26:14.874Z"
+    },
+    {
+      "id": "alt_1789973352988_axia",
+      "parcel_id": "pcl_1789971521651_c8kn",
+      "user_id": "usr_1789971521619_j07x",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:49:12.923Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:49:12.923Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789973352923.pdf",
+      "created_at": "2026-09-21T06:49:12.988Z"
+    },
+    {
+      "id": "alt_1789973353048_mar7",
+      "parcel_id": "pcl_1789971586467_lvti",
+      "user_id": "usr_1789971586455_zug9",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:49:13.013Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:49:13.013Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789973353013.pdf",
+      "created_at": "2026-09-21T06:49:13.048Z"
+    },
+    {
+      "id": "alt_1789973353096_5twx",
+      "parcel_id": "pcl_1789971974687_ldbk",
+      "user_id": "usr_1789971974667_yrpj",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T06:49:13.065Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T06:49:13.065Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789973353065.pdf",
+      "created_at": "2026-09-21T06:49:13.096Z"
+    },
+    {
+      "id": "alt_1789974300810_jh3v",
+      "parcel_id": "pcl_1789971521651_c8kn",
+      "user_id": "usr_1789971521619_j07x",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T07:05:00.774Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T07:05:00.774Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789974300775.pdf",
+      "created_at": "2026-09-21T07:05:00.810Z"
+    },
+    {
+      "id": "alt_1789974300857_jo36",
+      "parcel_id": "pcl_1789971586467_lvti",
+      "user_id": "usr_1789971586455_zug9",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T07:05:00.835Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T07:05:00.835Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789974300835.pdf",
+      "created_at": "2026-09-21T07:05:00.857Z"
+    },
+    {
+      "id": "alt_1789974300914_0gyv",
+      "parcel_id": "pcl_1789971974687_ldbk",
+      "user_id": "usr_1789971974667_yrpj",
+      "severity": "CRITICAL_RED",
+      "change_category": "UNAUTHORIZED_NEW_OWNER",
+      "diff_payload": [
+        {
+          "category": "UNAUTHORIZED_NEW_OWNER",
+          "severity": "CRITICAL_RED",
+          "title": "CRITICAL: Unauthorized New Name Inscribed on Land Record",
+          "description": "New unauthorized individual(s) [suraj yadav (unauthorized claimant)] have appeared on the government Khatauni record!",
+          "detected_at": "2026-09-21T07:05:00.887Z"
+        },
+        {
+          "category": "NEW_MUTATION_FILED",
+          "severity": "CRITICAL_RED",
+          "title": "URGENT: New Dakhil-Kharij (Mutation) Application Filed in Tehsil",
+          "description": "A new transfer petition has been logged at Tehsil Court: \"Active Dakhil-Kharij Case #MUT/2026/0412 under Section 34 UP Revenue Code\". Statutory 30-day objection countdown is active!",
+          "detected_at": "2026-09-21T07:05:00.887Z"
+        }
+      ],
+      "legal_draft_file": "D:\\zameen-rakshak\\data\\petitions\\Objection_Petition_Gata_241_1789974300887.pdf",
+      "created_at": "2026-09-21T07:05:00.915Z"
+    }
+  ]
+}

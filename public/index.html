@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ज़मीन सेवा केंद्र | Zameen Seva Kendra — नागरिक भूमि अभिलेख एवं दाखिल-खारिज निगरानी प्रणाली</title>
+  <meta name="description" content="ज़मीन सेवा केंद्र (Zameen Seva Kendra) — उत्तर प्रदेश व बिहार के भूस्वामियों एवं प्रवासी भारतीयों (NRIs) के लिए 24/7 पैतृक भूमि सुरक्षा व अवैध दाखिल-खारिज निगरानी पोर्टल।">
+  
+  <!-- OpenGraph Meta -->
+  <meta property="og:title" content="ज़मीन सेवा केंद्र — Zameen Seva Kendra">
+  <meta property="og:description" content="नागरिक भूमि अभिलेख सत्यापन एवं 24/7 अवैध दाखिल-खारिज निगरानी प्रणाली। 30-दिवसीय धारा 35 समयावधि से पूर्व तत्काल व्हाट्सएप अलर्ट।">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/govt_logo.png">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/png" href="/assets/govt_logo.png">
+</head>
+<body>
+
+  <!-- 1. National Tricolor Strip -->
+  <div class="tiranga-top-strip" aria-hidden="true"></div>
+
+  <!-- 2. Top Utility Bar -->
+  <aside class="top-utility-bar" aria-label="Citizen Utility Bar">
+    <div class="container top-utility-wrap">
+      <div class="utility-left">
+        <span class="gov-badge">🇮🇳 डिजिटल भूलेख निगरानी प्रकोष्ठ | Digital Land Records Cell</span>
+        <span>नागरिक भूमि अभिलेख एवं दाखिल-खारिज सतर्कता प्रणाली</span>
+      </div>
+      <div class="utility-right">
+        <span id="liveDateTime">सोमवार, 21 सितम्बर 2026</span>
+        <div class="accessibility-controls" aria-label="Text Size Controls">
+          <button class="acc-btn" onclick="document.body.style.fontSize='14px';" title="Decrease Font">A-</button>
+          <button class="acc-btn" onclick="document.body.style.fontSize='16px';" title="Normal Font">A</button>
+          <button class="acc-btn" onclick="document.body.style.fontSize='18px';" title="Increase Font">A+</button>
+        </div>
+        <button id="langToggleBtn" class="lang-toggle-btn" aria-label="Switch Language">
+          <span>🌐</span>
+          <span id="langBtnText">English</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 3. Official Government Masthead -->
+  <header class="gov-masthead">
+    <div class="container masthead-wrap">
+      <a href="/" class="masthead-brand">
+        <img src="/assets/govt_logo.png" alt="ज़मीन सेवा केंद्र आधिकारिक प्रतीक" class="gov-emblem-img">
+        <div class="masthead-text">
+          <h1>ज़मीन सेवा केंद्र</h1>
+          <div class="masthead-sub-en">ZAMEEN SEVA KENDRA</div>
+          <div class="masthead-desc">नागरिक भूमि अभिलेख सत्यापन एवं 24/7 दाखिल-खारिज निगरानी प्रणाली</div>
+        </div>
+      </a>
+
+      <div class="masthead-badges">
+        <div class="masthead-card-badge">
+          <strong>उ.प्र. राजस्व संहिता 2006</strong>
+          <span>धारा 35 विहित आपत्ति निगरानी</span>
+        </div>
+        <div class="masthead-card-badge" style="background: var(--gov-green-light); border-color:#bbf7d0;">
+          <strong style="color: var(--gov-green-dark);">100% सार्वजनिक रिकॉर्ड्स</strong>
+          <span>UP Bhulekh / DILRMP पर आधारित</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4. Primary Navigation Bar -->
+  <nav class="gov-nav" aria-label="Main Navigation">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="#home" class="active">मुख्य पृष्ठ (Home)</a></li>
+        <li><a href="#plansSection">24/7 सुरक्षा योजना (₹2,999/वर्ष)</a></li>
+        <li><a href="#plansSection" class="nri-tab">🌍 एनआरआई डेस्क ($120/yr)</a></li>
+        <li><a href="#rule35Section">धारा 35 नियम (Legal Trap)</a></li>
+        <li><a href="#enrollSection">नागरिक पंजीकरण (Enrollment)</a></li>
+        <li><a href="#faqSection">प्रायः पूछे जाने वाले प्रश्न (FAQ)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 5. Government Flash News Marquee / Ticker -->
+  <aside class="gov-ticker-bar" aria-label="Important Notices">
+    <div class="container ticker-wrap">
+      <span class="ticker-label">📢 अति-महत्वपूर्ण सूचना</span>
+      <div class="ticker-content">
+        उत्तर प्रदेश राजस्व संहिता 2006 (धारा 35) के तहत अवैध नामांतरण (Mutation) पर आपत्ति दर्ज कराने की विहित समय-सीमा केवल 30 दिन है। 30 दिन बीत जाने के बाद तहसीलदार द्वारा एकपक्षीय आदेश पारित कर दिया जाता है। अपनी पैतृक भूमि की 365 दिन 24/7 निगरानी चालू रखें।
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="home">
+
+    <!-- 6. Hero Section -->
+    <section class="gov-hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <div class="hero-notice-pill">
+              <span>🏛️</span>
+              <span>नागरिक भूलेख संरक्षण डेस्क • Citizen Land Protection Desk</span>
+            </div>
+
+            <h2 class="hero-main-heading">
+              अपनी पैतृक भूमि को <span class="highlight">अवैध दाखिल-खारिज</span> व भू-माफियाओं से सुरक्षित रखें।
+            </h2>
+
+            <p class="hero-subtext">
+              यदि आप अपने गांव से दूर शहर या विदेश में रहते हैं, तो कोई भी व्यक्ति फर्जी वसीयत या झूठे बैनामे के आधार पर गुपचुप दाखिल-खारिज का आवेदन कर सकता है। <strong>ज़मीन सेवा केंद्र</strong> हर रात 2:00 बजे सरकारी खतौनी की जांच करता है और किसी भी नए आवेदन पर तुरंत व्हाट्सएप पर रेड अलर्ट भेजता है।
+            </p>
+
+            <div class="hero-cta-strip">
+              <a href="#enrollSection" class="btn-gov-primary">
+                <span>🛡️</span>
+                <span>भूमि सुरक्षा पंजीकरण करें (Enroll Now)</span>
+              </a>
+              <a href="#plansSection" class="btn-gov-secondary">
+                <span>📋</span>
+                <span>योजनाएं एवं शुल्क देखें (View Plans)</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Statutory Warning Card -->
+          <div class="gov-statute-card">
+            <div class="statute-header">
+              <span style="font-size:1.4rem;">⚖️</span>
+              <h3>उ.प्र. राजस्व संहिता 2006 — धारा 35</h3>
+            </div>
+            <div class="statute-body">
+              <strong>कानूनी चेतावनी (Legal Reality):</strong>
+              <ul class="statute-points">
+                <li>तहसील में नामांतरण आवेदन दाखिल होने पर केवल <strong>30 दिन</strong> की सार्वजनिक उद्घोषणा होती है।</li>
+                <li>आपको कोई व्यक्तिगत पत्र या फोन कॉल नहीं भेजा जाता।</li>
+                <li>30 दिन में आपत्ति (Objection) दर्ज न होने पर नामांतरण पक्का हो जाता है।</li>
+                <li>इसके बाद सरकारी रिकॉर्ड सुधारने में <strong>15 से 20 वर्ष</strong> दीवानी मुकदमा लड़ना पड़ता है।</li>
+              </ul>
+            </div>
+            <div class="statute-footer">
+              ✓ समाधान: ज़मीन सेवा केंद्र 24 घंटे के भीतर अलर्ट देकर Day 2 पर फर्जीवाड़ा निरस्त करवाता है।
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Key Statistics Strip -->
+    <section class="gov-stats-bar">
+      <div class="container">
+        <div class="stats-bar-grid">
+          <div class="stat-box">
+            <h4>24,800+</h4>
+            <p>सुरक्षित पैतृक गाटे (Plots Guarded)</p>
+          </div>
+          <div class="stat-box">
+            <h4>रात 2:00 बजे</h4>
+            <p>दैनिक सरकारी खतौनी जांच (Nightly Sync)</p>
+          </div>
+          <div class="stat-box">
+            <h4 style="color: var(--gov-saffron-dark);">30 दिन</h4>
+            <p>धारा 35 विहित आपत्ति सीमा (Statutory Window)</p>
+          </div>
+          <div class="stat-box">
+            <h4 style="color: var(--gov-green-dark);">100%</h4>
+            <p>राजस्व परिषद डिजिटल सिंक (Gov Record Sync)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. The Two Plans: ₹2,999/yr (Domestic) & $120/yr (NRI) -->
+    <section class="gov-plans-section" id="plansSection">
+      <div class="container">
+        
+        <div class="section-title-wrap">
+          <span class="section-badge">पारदर्शी वार्षिक शुल्क संरचना • Annual Protection Plans</span>
+          <h2 class="section-main-title">केवल दो सरल व संपूर्ण सुरक्षा योजनाएं</h2>
+          <p class="section-desc">
+            प्रति दिन ₹8 से भी कम खर्च में करोड़ों रुपये की पैतृक विरासत व पुश्तैनी भूमि पर 365 दिन 24/7 सरकारी सुरक्षा।
+          </p>
+        </div>
+
+        <div class="plans-dual-grid">
+          
+          <!-- Plan 1: Indian Resident Landowners (₹2,999/yr) -->
+          <div class="plan-card highlight-resident">
+            <div class="plan-ribbon">🇮🇳 भारतीय निवासी भूस्वामी योजना (Domestic Landowners)</div>
+            <div class="plan-card-body">
+              <span class="plan-target">भारत में रहने वाले भूस्वामियों के लिए</span>
+              <h3 class="plan-name-title">वार्षिक भूमि सुरक्षा कवच</h3>
+              
+              <div class="plan-cost-display">
+                <span class="plan-amount">₹2,999</span>
+                <span class="plan-duration">/ वर्ष (प्रति गाटा)</span>
+              </div>
+              <div class="plan-unit-cost">₹8 प्रति दिन से भी कम • 365 दिन पूर्ण सुरक्षा</div>
+
+              <ul class="plan-features-list">
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>365 दिन दैनिक खतौनी जांच:</strong> हर रात 2:00 बजे यूपी भूलेख सरकारी पोर्टल से रिकॉर्ड का मिलान।</div>
+                </li>
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>व्हाट्सएप व एसएमएस पर रेड अलर्ट:</strong> किसी भी अनधिकृत दाखिल-खारिज पर 24 घंटे में सूचना।</div>
+                </li>
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>धारा 35 स्थगन याचिका (Stay Petition PDF):</strong> राजस्व विशेषज्ञ वकील द्वारा प्रमाणित आपत्ति ड्राफ्ट।</div>
+                </li>
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>बैंक लोन व बंधक चेतावनी:</strong> भूमि पर नए बैंक बंधक, आर.सी. या कुर्की आदेश की तत्काल सूचना।</div>
+                </li>
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>आसान डायरेक्ट यूपीआई भुगतान:</strong> Google Pay, PhonePe, Paytm, BHIM द्वारा 0% गेटवे शुल्क।</div>
+                </li>
+              </ul>
+
+              <button onclick="selectPlanAndScroll('RESIDENT_2999')" class="btn-select-plan btn-plan-resident">
+                👉 ₹2,999 योजना चुनें और पंजीकरण करें
+              </button>
+            </div>
+          </div>
+
+          <!-- Plan 2: NRI / Overseas Landowners ($120/yr) -->
+          <div class="plan-card highlight-nri">
+            <div class="plan-ribbon nri-ribbon">🌍 प्रवासी भारतीय डेस्क (NRI & Overseas Desk)</div>
+            <div class="plan-card-body">
+              <span class="plan-target">USA, UK, Canada, UAE, Australia & Abroad NRIs</span>
+              <h3 class="plan-name-title">NRI Ancestral Sentinel Shield</h3>
+              
+              <div class="plan-cost-display">
+                <span class="plan-amount">$120</span>
+                <span class="plan-duration">/ Year (Per Parcel)</span>
+              </div>
+              <div class="plan-unit-cost" style="background:#ccfbf1; color:#0f766e;">Approx. ₹9,999/yr • Priority International Desk</div>
+
+              <ul class="plan-features-list">
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>Timezone-Synced WhatsApp & Email:</strong> Instant high-priority alerts delivered to USA, UK, UAE timezones.</div>
+                </li>
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>Ground Tehsil Liaison Assistance:</strong> Direct assistance connecting your local family with vetted revenue lawyers.</div>
+                </li>
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>Quarterly Certified Khatauni PDF:</strong> Official digitally stamped Khatauni dispatch sent straight to your email.</div>
+                </li>
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>Section 35 Revenue Court Emergency Pack:</strong> Ready-to-file legal objection petition with complete mutation history.</div>
+                </li>
+                <li>
+                  <span class="check">✓</span>
+                  <div><strong>International Cross-Border Payment:</strong> Pay securely in USD via International Cards, Wire, Stripe, or PayPal.</div>
+                </li>
+              </ul>
+
+              <button onclick="selectPlanAndScroll('NRI_120USD')" class="btn-select-plan btn-plan-nri">
+                👉 Select $120 NRI Plan & Enroll
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 9. Citizen Registration & Enrollment Form Section -->
+    <section class="gov-enroll-section" id="enrollSection">
+      <div class="container">
+        
+        <div class="enroll-card">
+          <div class="enroll-card-header">
+            <h3>🏛️ नागरिक भूमि सुरक्षा पंजीकरण फॉर्म (Citizen Land Enrollment Form)</h3>
+            <span>डिजिटल भूलेख सत्यापन एवं 24/7 निगरानी प्रकोष्ठ (Digital Land Verification Cell)</span>
+          </div>
+
+          <div class="enroll-form-body">
+            
+            <form id="enrollmentForm" onsubmit="handleEnrollmentSubmit(event)">
+              
+              <!-- Step 1: Select Plan -->
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">1. सुरक्षा योजना का चयन करें (Select Protection Plan)</legend>
+                
+                <div class="plan-radio-group">
+                  <label class="plan-radio-label selected" id="labelRadio2999" onclick="setFormPlan('RESIDENT_2999')">
+                    <input type="radio" name="selectedPlan" id="radioResident" value="RESIDENT_2999" checked>
+                    <div class="radio-text">
+                      <strong>🇮🇳 भारतीय निवासी भूस्वामी</strong>
+                      <span>₹2,999 / वर्ष (प्रति गाटा) • UPI / QR भुगतान</span>
+                    </div>
+                  </label>
+
+                  <label class="plan-radio-label" id="labelRadioNRI" onclick="setFormPlan('NRI_120USD')">
+                    <input type="radio" name="selectedPlan" id="radioNRI" value="NRI_120USD">
+                    <div class="radio-text">
+                      <strong>🌍 प्रवासी भारतीय (NRI Desk)</strong>
+                      <span>$120 / year (Per Parcel) • USD International Desk</span>
+                    </div>
+                  </label>
+                </div>
+              </fieldset>
+
+              <!-- Step 2: Owner Information -->
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">2. भूस्वामी / आवेदक का विवरण (Landowner Details)</legend>
+                
+                <div class="form-row-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="applicantName">
+                      भूस्वामी / आवेदक का पूरा नाम <span class="req">*</span>
+                    </label>
+                    <input type="text" id="applicantName" class="form-input-gov" placeholder="उदा. दिनेश नाथ / Rameshwar Dayal" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="applicantPhone">
+                      व्हाट्सएप मोबाइल नंबर (WhatsApp Number) <span class="req">*</span>
+                    </label>
+                    <input type="tel" id="applicantPhone" class="form-input-gov" placeholder="+91 98765 43210 या अंतरराष्ट्रीय नंबर" required>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-top:1rem;">
+                  <label class="form-label" for="applicantEmail">
+                    ईमेल पता (Email Address for Official PDF Reports)
+                  </label>
+                  <input type="email" id="applicantEmail" class="form-input-gov" placeholder="name@example.com">
+                </div>
+              </fieldset>
+
+              <!-- Step 3: Land Record Details -->
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">3. भूमि अभिलेख विवरण (Land Parcel Details)</legend>
+                
+                <div class="form-row-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="landDistrict">
+                      जनपद / जिला (District) <span class="req">*</span>
+                    </label>
+                    <input type="text" id="landDistrict" class="form-input-gov" placeholder="उदा. गाजियाबाद / गोरखपुर / लखनऊ" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="landTehsil">
+                      तहसील (Tehsil) <span class="req">*</span>
+                    </label>
+                    <input type="text" id="landTehsil" class="form-input-gov" placeholder="उदा. मोदीनगर / चौरी चौरा / सदर" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="landVillage">
+                      ग्राम / मौजा (Village) <span class="req">*</span>
+                    </label>
+                    <input type="text" id="landVillage" class="form-input-gov" placeholder="उदा. कादराबाद / रामपुर" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="landKhasra">
+                      गाटा / खसरा संख्या (Gata / Khasra No.) <span class="req">*</span>
+                    </label>
+                    <input type="text" id="landKhasra" class="form-input-gov" placeholder="उदा. 28MI या 241" required>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Step 4: Payment & Activation -->
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">4. सक्रियण व भुगतान (Payment & Activation)</legend>
+                
+                <!-- Domestic ₹2,999 Box -->
+                <div id="paymentBoxDomestic" class="payment-instruction-box">
+                  <div class="qr-frame" style="width: 175px; height: 175px; background:#fff; border: 2px solid #cbd5e1; border-radius:10px; padding: 8px; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 10px rgba(0,0,0,0.06);">
+                    <img id="upiQrCodeImg" src="/assets/qr_code_clean.png?v=3" alt="Official UPI QR Code — Zameen Seva Kendra" style="width:100%; height:100%; object-fit:contain; border-radius:4px;">
+                  </div>
+                  
+                  <div class="pay-info-col">
+                    <div style="font-size:0.85rem; color:var(--text-muted); font-weight:700;">
+                      खाता / सेवा प्रदाता: <strong style="color:var(--gov-navy-dark); font-size:1.05rem;">ज़मीन सेवा केंद्र (राजस्व सुरक्षा डेस्क)</strong>
+                    </div>
+                    <div style="font-size:0.85rem; color:var(--text-muted); font-weight:700; margin-top:0.25rem;">
+                      वार्षिक सुरक्षा शुल्क: <span style="color:var(--gov-green-dark); font-size:1.25rem; font-weight:800;">₹2,999</span> (0% Gateway Fee)
+                    </div>
+
+                    <div class="upi-id-box">
+                      <span>UPI ID:</span>
+                      <strong style="color:#0b3b60; font-size:0.95rem;">zameensevakendra@ybl</strong>
+                      <button type="button" onclick="navigator.clipboard.writeText('zameensevakendra@ybl'); alert('UPI ID zameensevakendra@ybl कॉपी हो गया!');" style="background:#0b3b60; color:#fff; border:none; border-radius:4px; padding:0.2rem 0.5rem; cursor:pointer; font-size:0.75rem; font-weight:700;" title="Copy UPI ID">📋 Copy</button>
+                    </div>
+
+                    <div style="margin-top:0.35rem;">
+                      <a href="upi://pay?pa=zameensevakendra@ybl&pn=Zameen%20Seva%20Kendra&am=2999.00&cu=INR&tn=ZameenSevaKendra_Annual_2999" class="btn-gov-secondary" style="font-size:0.85rem; padding:0.4rem 0.8rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; font-weight:700;">
+                        <span>📱</span>
+                        <span>UPI ऐप द्वारा सीधे भुगतान करें (PhonePe / GPay / Paytm)</span>
+                      </a>
+                    </div>
+
+                    <div style="font-size:0.82rem; color:var(--text-muted); margin-top:0.5rem;">
+                      Google Pay, PhonePe, Paytm या किसी भी UPI ऐप से यह QR कोड स्कैन करके ₹2,999 का भुगतान करें।
+                    </div>
+
+                    <div style="margin-top:0.75rem;">
+                      <label style="font-size:0.82rem; font-weight:700; display:block; margin-bottom:0.25rem; color:var(--gov-navy-dark);">
+                        UPI UTR / Reference No. (भुगतान के बाद मिला 12-अंकों का नंबर):
+                      </label>
+                      <input type="text" id="paymentUtr" class="form-input-gov" placeholder="उदा. 423456789012" style="max-width:320px;">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- NRI $120 Box -->
+                <div id="paymentBoxNRI" class="payment-instruction-box" style="display:none; background:#f0fdf4; border-color:#86efac;">
+                  <div style="font-size:2.5rem; text-align:center; padding:1rem;">🌍</div>
+                  <div class="pay-info-col">
+                    <div style="font-weight:800; font-size:1.1rem; color:#0f766e;">NRI Annual Sentinel Desk: $120 / Year</div>
+                    <p style="font-size:0.88rem; color:var(--text-muted); margin:0.4rem 0 0.8rem;">
+                      Upon submitting your plot details, our dedicated overseas liaison will instantly send you an international payment link (Cards/Stripe/Wire) and initiate your 24/7 UP Bhulekh audit.
+                    </p>
+                    <div style="font-size:0.82rem; color:#0f766e; font-weight:700;">
+                      ✓ Dedicated NRI WhatsApp Desk: +91 98765 43210 (Direct Support)
+                    </div>
+                  </div>
+                </div>
+
+              </fieldset>
+
+              <button type="submit" class="btn-submit-enrollment" id="submitEnrollBtn">
+                <span>🛡️</span>
+                <span>भूमि सुरक्षा पंजीकरण पूर्ण करें (Submit Enrollment)</span>
+              </button>
+
+            </form>
+
+            <!-- 10. Official Acknowledgment Receipt (Appears on submit) -->
+            <div id="officialReceiptCard" class="receipt-wrapper">
+              <div class="receipt-header">
+                <img src="/assets/govt_logo.png" alt="Emblem" style="width:64px; height:64px; margin-bottom:0.5rem;">
+                <h3>ज़मीन सेवा केंद्र — आधिकारिक पंजीकरण पावती</h3>
+                <div style="font-size:0.85rem; color:var(--gov-green-dark); font-weight:700; margin-top:0.25rem;">
+                  ✓ SUCCESS: 24/7 भूलेख निगरानी सक्रियता अनुरोध दर्ज (ENROLLMENT RECORDED)
+                </div>
+              </div>
+
+              <div class="receipt-grid">
+                <div class="receipt-item">
+                  <strong>पंजीकरण संख्या (Registration ID):</strong>
+                  <span id="rcptOrderId" style="color:var(--gov-navy);">ZSK_2026_9941</span>
+                </div>
+                <div class="receipt-item">
+                  <strong>आवेदक / भूस्वामी का नाम:</strong>
+                  <span id="rcptName">दिनेश नाथ</span>
+                </div>
+                <div class="receipt-item">
+                  <strong>खसरा / गाटा संख्या:</strong>
+                  <span id="rcptGata" style="color:var(--gov-crimson);">गाटा #28MI</span>
+                </div>
+                <div class="receipt-item">
+                  <strong>ग्राम व तहसील (Location):</strong>
+                  <span id="rcptLocation">कादराबाद, मोदीनगर (गाजियाबाद)</span>
+                </div>
+                <div class="receipt-item">
+                  <strong>सुरक्षा योजना (Plan):</strong>
+                  <span id="rcptPlan">₹2,999 / वर्ष (वार्षिक सुरक्षा कवच)</span>
+                </div>
+                <div class="receipt-item">
+                  <strong>व्हाट्सएप अलर्ट नंबर:</strong>
+                  <span id="rcptPhone">+91 98765 43210</span>
+                </div>
+              </div>
+
+              <div style="background:#eaf6ea; border:1px solid #bbf7d0; border-radius:4px; padding:1rem; font-size:0.88rem; color:#14532d; line-height:1.6; margin-bottom:1.5rem;">
+                <strong>सत्यापन स्थिति (Status):</strong> आपके गाटा की सरकारी खतौनी का बेसलाइन स्नैपशॉट यूपी भूलेख से सुरक्षित कर लिया गया है। हर रात 2:00 बजे स्वचालित निगरानी जारी रहेगी तथा किसी भी अनाधिकृत आवेदन पर आपके व्हाट्सएप पर तत्काल सूचना भेजी जाएगी।
+              </div>
+
+              <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                <button onclick="window.print();" class="btn-gov-secondary" style="padding:0.6rem 1.2rem;">
+                  🖨️ पावती प्रिंट करें (Print Receipt)
+                </button>
+                <button onclick="document.getElementById('officialReceiptCard').style.display='none'; document.getElementById('enrollmentForm').style.display='block';" class="btn-gov-primary" style="padding:0.6rem 1.2rem;">
+                  नया पंजीकरण करें (New Enrollment)
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 11. Section 35 Government Trap Breakdown Table -->
+    <section class="gov-section35-block" id="rule35Section">
+      <div class="container">
+        
+        <div class="section-title-wrap">
+          <span class="section-badge">कानूनी प्रक्रिया विश्लेषण • Legal Procedure Analysis</span>
+          <h2 class="section-main-title">30-दिवसीय दाखिल-खारिज नियम (धारा 35) की वास्तविकता</h2>
+          <p class="section-desc">
+            जानिए क्यों गांव से बाहर रहने वाले प्रवासी भूस्वामी व नौकरीपेशा लोग चुपचाप अपनी जमीन गंवा बैठते हैं।
+          </p>
+        </div>
+
+        <div class="rule35-table-wrap">
+          <table class="rule35-table">
+            <thead>
+              <tr>
+                <th style="width:20%;">चरण (Timeline)</th>
+                <th style="width:40%;">सामान्य स्थिति (बिना निगरानी के - The Trap)</th>
+                <th style="width:40%;">ज़मीन सेवा केंद्र सुरक्षा के साथ (With Sentinel)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>दिन 1 (Day 1)</strong></td>
+                <td class="cell-danger">भू-माफिया या फर्जी रिश्तेदार तहसील में फर्जी वसीयत या जाली बैनामा से दाखिल-खारिज का आवेदन डालता है।</td>
+                <td class="cell-safe">आवेदन दर्ज होते ही ज़मीन सेवा केंद्र का रिकॉर्ड ट्रैकर रात 2:00 बजे इसे पहले ही दिन पकड़ लेता है।</td>
+              </tr>
+              <tr>
+                <td><strong>दिन 2 से 10</strong></td>
+                <td class="cell-danger">तहसील केवल अपने स्थानीय नोटिस बोर्ड पर 30 दिन का नोटिस चस्पा करती है। आपको कोई पत्र या फोन नहीं आता।</td>
+                <td class="cell-safe">आपके व्हाट्सएप व ईमेल पर क्रिटिकल रेड अलर्ट आता है और साथ में धारा 35 की कानूनी स्थगन याचिका (PDF) मिलती है।</td>
+              </tr>
+              <tr>
+                <td><strong>दिन 31 (Day 31)</strong></td>
+                <td class="cell-danger"><strong>30-दिन की विहित सीमा समाप्त।</strong> कोई आपत्ति न मिलने पर तहसीलदार द्वारा एकपक्षीय आदेश पारित। खतौनी में नाम बदल गया।</td>
+                <td class="cell-safe">आप या आपके वकील द्वारा 48 घंटे में दाखिल की गई आपत्ति के कारण तहसीलदार द्वारा फर्जीवाड़ा तुरंत निरस्त (Dismissed)।</td>
+              </tr>
+              <tr>
+                <td><strong>वर्ष 2 से 20</strong></td>
+                <td class="cell-danger">आपको सालों बाद पता चलता है। फिर दीवानी अदालत (Civil Court) में 15–20 साल और ₹5–10 लाख खर्च करके मुकदमा लड़ना पड़ता है।</td>
+                <td class="cell-safe"><strong>शून्य कानूनी झंझट।</strong> आपकी पैतृक विरासत 100% सुरक्षित और खतौनी में आपका नाम निर्विवाद बरकरार।</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 12. FAQ Section -->
+    <section class="gov-faq-section" id="faqSection">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-badge">नागरिक सहायता • Citizen Helpdesk FAQ</span>
+          <h2 class="section-main-title">अक्सर पूछे जाने वाले प्रश्न (Frequently Asked Questions)</h2>
+        </div>
+
+        <div class="faq-accordion">
+          
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>प्र. 1: उ.प्र. राजस्व संहिता की धारा 35 क्या है और 30 दिन का समय क्यों महत्वपूर्ण है?</span>
+              <span>▾</span>
+            </div>
+            <div class="faq-answer">
+              उ.प्र. राजस्व संहिता 2006 की धारा 35 के तहत जब कोई व्यक्ति किसी भूमि पर नामांतरण (दाखिल-खारिज) के लिए प्रार्थना पत्र देता है, तो न्यायालय द्वारा 30 दिनों की उद्घोषणा (Notice) जारी की जाती है। यदि इन 30 दिनों के भीतर मूल खातेदार आपत्ति दर्ज नहीं कराता, तो न्यायालय मान लेता है कि किसी को कोई एतराज नहीं है और नामांतरण आदेश पारित कर देता है।
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>प्र. 2: ज़मीन सेवा केंद्र खतौनी की जांच कैसे करता है?</span>
+              <span>▾</span>
+            </div>
+            <div class="faq-answer">
+              हमारा सिस्टम राज्य राजस्व परिषद के सार्वजनिक डिजिटल रिकॉर्ड्स (UP Bhulekh / DILRMP पोर्टल) से जुड़ा है। हर रात 2:00 बजे आपके पंजीकृत गाटा संख्या के खतौनी विवरण, दर्ज खातेदारों के नाम, नए आवेदन और बैंक बंधक की स्थिति की जांच की जाती है।
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>प्र. 3: यदि कोई अवैध दाखिल-खारिज का प्रयास करता है तो मुझे क्या करना होगा?</span>
+              <span>▾</span>
+            </div>
+            <div class="faq-answer">
+              जैसे ही कोई नया आवेदन दर्ज होगा, आपको व्हाट्सएप पर रेड अलर्ट मिलेगा। साथ ही हमारे पैनल के अधिवक्ताओं द्वारा धारा 35 के तहत प्रारूपित एक 'आपत्ति प्रार्थना पत्र' (Objection Stay Petition PDF) आपके व्हाट्सएप पर भेज दिया जाएगा। आपको केवल उस पर हस्ताक्षर करके स्थानीय तहसील में जमा करना होगा।
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>प्र. 4: प्रवासी भारतीयों (NRIs) के लिए $120 योजना में क्या विशेष सुविधाएं हैं?</span>
+              <span>▾</span>
+            </div>
+            <div class="faq-answer">
+              एनआरआई योजना विशेष रूप से विदेश में रह रहे भूस्वामियों के लिए बनाई गई है। इसमें अंतरराष्ट्रीय समय-क्षेत्र (Timezone) के अनुसार व्हाट्सएप व फोन सहायता, त्रैमासिक डिजिटल खतौनी रिपोर्ट, तथा तहसील स्तर पर यदि कोई विवाद उत्पन्न होता है तो भौतिक रूप से स्थानीय वकील समन्वय सहायता प्रदान की जाती है।
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 12.5. Legal Compliance & Citizen Transparency Banner -->
+    <section class="container" style="margin: 2.5rem auto 1rem;">
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; border-left: 5px solid var(--gov-navy); border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; font-size: 0.85rem; color: #475569; line-height: 1.6; box-shadow: var(--shadow-sm);">
+        <strong style="color: var(--gov-navy-dark); font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
+          <span>ℹ️</span> नागरिक पारदर्शिता एवं विधिक घोषणा (Citizen Transparency & Statutory Declaration):
+        </strong>
+        ज़मीन सेवा केंद्र (Zameen Seva Kendra) एक स्वतंत्र निजी नागरिक सहायता, राजस्व रिकॉर्ड विश्लेषण व पैतृक भूमि सतर्कता मंच है। यह किसी प्रत्यक्ष सरकारी विभाग का आधिकारिक पोर्टल नहीं है और न ही सरकारी राजस्व न्यायालयों का विकल्प है। हमारा मंच राज्य सरकारों द्वारा सार्वजनिक रूप से उपलब्ध कराए जाने वाले डिजिटल भूलेख (DILRMP / UP Bhulekh / RCCMS) रिकॉर्ड्स की दैनिक निगरानी, अनधिकृत आवेदनों पर समयबद्ध चेतावनी तथा उ.प्र. राजस्व संहिता 2006 (धारा 35) के अंतर्गत विधिक आपत्ति प्रार्थना पत्र का प्रारूप उपलब्ध कराने की निजी पेशेवर परामर्श सेवा प्रदान करता है।
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 13. Official Portal Footer -->
+  <footer class="gov-portal-footer">
+    <div class="container">
+      <div class="footer-columns">
+        
+        <div class="footer-col">
+          <h4>🏛️ ज़मीन सेवा केंद्र</h4>
+          <p style="line-height:1.6; margin-top:0.5rem; font-size:0.85rem;">
+            नागरिक भूमि अभिलेख सत्यापन एवं 24/7 दाखिल-खारिज निगरानी प्रणाली। हमारा उद्देश्य भारत व विदेश में रह रहे नागरिकों को उनकी पैतृक भूमि के राजस्व अभिलेखों की सुरक्षा व पारदर्शी जानकारी प्रदान करना है।
+          </p>
+          <div style="margin-top:1rem; font-size:0.82rem; color:#94a3b8;">
+            📞 नागरिक हेल्पलाइन: WhatsApp सहायता 24/7 उपलब्ध<br>
+            📧 सहायता ईमेल: sahayata@zameensevakendra.in
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>महत्वपूर्ण सरकारी पोर्टल लिंक्स</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://upbhulekh.gov.in" target="_blank">🏛️ उत्तर प्रदेश भूलेख (UP Bhulekh)</a></li>
+            <li><a href="http://bor.up.nic.in" target="_blank">📜 राजस्व परिषद उत्तर प्रदेश</a></li>
+            <li><a href="https://dilrmp.gov.in" target="_blank">🌐 राष्ट्रीय भूमि अभिलेख आधुनिकीकरण (DILRMP)</a></li>
+            <li><a href="https://biharbhumi.bihar.gov.in" target="_blank">🌾 बिहार भूमि राजस्व पोर्टल</a></li>
+            <li><a href="https://digitalindia.gov.in" target="_blank">🇮🇳 डिजिटल इंडिया (Digital India)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>नागरिक सेवाएं एवं योजनाएं</h4>
+          <ul class="footer-links-list">
+            <li><a href="#plansSection">🇮🇳 भारतीय निवासी भूस्वामी योजना (₹2,999/वर्ष)</a></li>
+            <li><a href="#plansSection">🌍 प्रवासी भारतीय एनआरआई डेस्क ($120/year)</a></li>
+            <li><a href="#rule35Section">⚖️ धारा 35 आपत्ति नियम व सावधानियां</a></li>
+            <li><a href="#enrollSection">📝 नवीन भूमि सुरक्षा पंजीकरण</a></li>
+            <li><a href="#faqSection">❓ सहायता केंद्र व अक्सर पूछे जाने वाले प्रश्न</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-disclaimer-bar">
+        <p>
+          <strong>वैधानिक अस्वीकरण (Legal Disclaimer):</strong> ज़मीन सेवा केंद्र (Zameen Seva Kendra) एक स्वतंत्र नागरिक सहायता एवं भूलेख सूचना सुविधा मंच है। यह किसी प्रत्यक्ष सरकारी विभाग का आधिकारिक पोर्टल नहीं है। सभी सत्यापन सार्वजनिक सरकारी राजस्व पोर्टल्स (Digital India Land Records DILRMP / UP Bhulekh) के सार्वजनिक अभिलेखों से किए जाते हैं।
+        </p>
+        <p style="margin-top:0.6rem; color:#cbd5e1;">
+          © 2026 ज़मीन सेवा केंद्र (Zameen Seva Kendra). सर्वाधिकार सुरक्षित। • Designed for Landowners & Global Indian Diaspora.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Clean, Lightweight Client Logic (No Bloated DOM Virtualization) -->
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1146 @@
+/* ==========================================================================
+   ज़मीन सेवा केंद्र (ZAMEEN SEVA KENDRA) — OFFICIAL CITIZEN PORTAL DESIGN SYSTEM
+   Theme: Authentic Indian Government & Citizen Utility Portal (Light Institutional)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --gov-navy-dark: #07213d;
+  --gov-navy: #0b3b60;
+  --gov-navy-light: #154e85;
+  --gov-blue-subtle: #ebf3fa;
+
+  --gov-saffron: #f37021;
+  --gov-saffron-dark: #d9580b;
+  --gov-saffron-light: #fff3ec;
+
+  --gov-green: #138808;
+  --gov-green-dark: #0e6b05;
+  --gov-green-light: #eaf6ea;
+
+  --gov-gold: #b38b28;
+  --gov-gold-light: #fef9e7;
+
+  --gov-crimson: #c5221f;
+  --gov-crimson-light: #fde8e8;
+
+  --bg-page: #f4f6f9;
+  --bg-card: #ffffff;
+  --bg-subtle: #f8fafc;
+
+  --border-color: #dbe2ea;
+  --border-dark: #cbd5e1;
+
+  --text-main: #1e293b;
+  --text-muted: #475569;
+  --text-light: #64748b;
+
+  --font-main: 'Outfit', sans-serif;
+  --font-hindi: 'Noto Sans Devanagari', 'Outfit', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-hindi);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* 1. National Tricolor Strip */
+.tiranga-top-strip {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #FF9933 0%, #FF9933 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #138808 66.6%, #138808 100%);
+}
+
+/* 2. Top Utility Bar (Gov Accessibility & Language) */
+.top-utility-bar {
+  background-color: #f1f5f9;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 0.35rem 0;
+}
+
+.top-utility-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.utility-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gov-badge {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  color: var(--gov-navy);
+  font-size: 0.75rem;
+}
+
+.utility-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.accessibility-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.acc-btn {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 3px;
+  color: var(--text-main);
+}
+
+.acc-btn:hover {
+  background: var(--gov-navy);
+  color: #fff;
+}
+
+.lang-toggle-btn {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--gov-navy);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.lang-toggle-btn:hover {
+  background: var(--gov-navy);
+  color: #fff;
+}
+
+/* 3. Official Masthead (Logo & Department Title) */
+.gov-masthead {
+  background: #ffffff;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.masthead-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.masthead-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  text-decoration: none;
+}
+
+.gov-emblem-img {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));
+}
+
+.masthead-text h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--gov-navy-dark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.masthead-sub-en {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gov-saffron-dark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+  font-family: var(--font-main);
+}
+
+.masthead-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+  font-weight: 500;
+}
+
+.masthead-badges {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.masthead-card-badge {
+  background: var(--gov-blue-subtle);
+  border: 1px solid #c2dbf0;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-md);
+  text-align: right;
+}
+
+.masthead-card-badge strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gov-navy);
+}
+
+.masthead-card-badge span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* 4. Government Navbar */
+.gov-nav {
+  background-color: var(--gov-navy);
+  border-bottom: 3px solid var(--gov-saffron);
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.nav-list li a {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.85rem 1.15rem;
+  transition: all 0.2s;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.nav-list li a:hover,
+.nav-list li a.active {
+  background-color: var(--gov-navy-dark);
+  color: #ffdd99;
+}
+
+.nav-list li a.nri-tab {
+  background-color: #082949;
+  color: #8ce1a4;
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+
+.nav-list li a.nri-tab:hover {
+  background-color: #051a30;
+  color: #a4f5ba;
+}
+
+/* 5. Ticker / Marquee */
+.gov-ticker-bar {
+  background: #fff8e1;
+  border-bottom: 1px solid #ffe082;
+  padding: 0.45rem 0;
+  font-size: 0.85rem;
+  color: #795548;
+}
+
+.ticker-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ticker-label {
+  background: var(--gov-crimson);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.ticker-content {
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #5d4037;
+}
+
+/* 6. Hero Notice & Overview */
+.gov-hero-section {
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-page) 100%);
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-notice-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gov-saffron-light);
+  border: 1px solid #fed7aa;
+  color: var(--gov-saffron-dark);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-main-heading {
+  font-size: 2.15rem;
+  font-weight: 800;
+  color: var(--gov-navy-dark);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.hero-main-heading span.highlight {
+  color: var(--gov-crimson);
+  text-decoration: underline;
+  text-decoration-color: #fca5a5;
+  text-underline-offset: 4px;
+}
+
+.hero-subtext {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.65;
+}
+
+.hero-cta-strip {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-gov-primary {
+  background: linear-gradient(180deg, #0f5288, var(--gov-navy));
+  color: #ffffff;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 10px rgba(11, 59, 96, 0.25);
+  border: 1px solid var(--gov-navy-dark);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-gov-primary:hover {
+  background: var(--gov-navy-dark);
+  box-shadow: 0 6px 14px rgba(11, 59, 96, 0.35);
+  color: #fff;
+}
+
+.btn-gov-secondary {
+  background: #ffffff;
+  color: var(--gov-navy);
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--gov-navy);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-gov-secondary:hover {
+  background: var(--gov-blue-subtle);
+}
+
+/* Official Statutory Warning Card */
+.gov-statute-card {
+  background: #ffffff;
+  border: 2px solid #fed7aa;
+  border-left: 6px solid var(--gov-saffron);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.statute-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.statute-header h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--gov-crimson);
+}
+
+.statute-body {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.statute-points {
+  margin: 1rem 0;
+  padding-left: 1.25rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.statute-points li {
+  margin-bottom: 0.4rem;
+}
+
+.statute-footer {
+  background: var(--gov-saffron-light);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gov-saffron-dark);
+}
+
+/* 7. Official Statistics Strip */
+.gov-stats-bar {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem 0;
+}
+
+.stats-bar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .stats-bar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat-box h4 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  line-height: 1.1;
+  font-family: var(--font-main);
+}
+
+.stat-box p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* 8. The Two Plans (₹2,999/yr vs $120/yr) */
+.gov-plans-section {
+  padding: 3rem 0;
+}
+
+.section-title-wrap {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+.section-badge {
+  display: inline-block;
+  background: var(--gov-blue-subtle);
+  color: var(--gov-navy);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid #bfdbfe;
+  margin-bottom: 0.5rem;
+}
+
+.section-main-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--gov-navy-dark);
+  line-height: 1.25;
+}
+
+.section-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+.plans-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .plans-dual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.plan-card {
+  background: #ffffff;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.plan-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: #94a3b8;
+}
+
+.plan-card.highlight-resident {
+  border-color: var(--gov-navy);
+}
+
+.plan-card.highlight-nri {
+  border-color: #0d9488;
+}
+
+.plan-ribbon {
+  background: var(--gov-navy);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 1rem;
+  text-align: center;
+}
+
+.plan-ribbon.nri-ribbon {
+  background: #0f766e;
+}
+
+.plan-card-body {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-target {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.plan-name-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gov-navy-dark);
+  margin: 0.25rem 0 0.75rem;
+}
+
+.plan-cost-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.plan-amount {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--gov-navy-dark);
+  font-family: var(--font-main);
+  line-height: 1;
+}
+
+.plan-duration {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.plan-unit-cost {
+  font-size: 0.82rem;
+  color: var(--gov-green-dark);
+  font-weight: 700;
+  background: var(--gov-green-light);
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+}
+
+.plan-features-list {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.plan-features-list li {
+  font-size: 0.92rem;
+  color: var(--text-main);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.plan-features-list li span.check {
+  color: var(--gov-green);
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.btn-select-plan {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  display: block;
+}
+
+.btn-plan-resident {
+  background: var(--gov-navy);
+  color: #ffffff;
+}
+
+.btn-plan-resident:hover {
+  background: var(--gov-navy-dark);
+}
+
+.btn-plan-nri {
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.btn-plan-nri:hover {
+  background: #115e59;
+}
+
+/* 9. Citizen Registration / Enrollment Form Section */
+.gov-enroll-section {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 3rem 0;
+}
+
+.enroll-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.enroll-card-header {
+  background: var(--gov-navy);
+  color: #ffffff;
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.enroll-card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.enroll-card-header span {
+  font-size: 0.82rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+.enroll-form-body {
+  padding: 2rem 2.25rem;
+}
+
+.form-fieldset {
+  margin-bottom: 1.75rem;
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+  background: #fafbfc;
+}
+
+.form-legend {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gov-navy);
+  padding: 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-row-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 650px) {
+  .form-row-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.form-label span.req {
+  color: var(--gov-crimson);
+}
+
+.form-input-gov {
+  border: 1px solid #cbd5e1;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #ffffff;
+  color: var(--text-main);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input-gov:focus {
+  outline: none;
+  border-color: var(--gov-navy);
+  box-shadow: 0 0 0 3px rgba(11, 59, 96, 0.12);
+}
+
+/* Plan selector radio boxes */
+.plan-radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 550px) {
+  .plan-radio-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.plan-radio-label {
+  border: 2px solid var(--border-color);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: all 0.2s;
+}
+
+.plan-radio-label.selected {
+  border-color: var(--gov-navy);
+  background: var(--gov-blue-subtle);
+}
+
+.plan-radio-label input[type="radio"] {
+  margin-top: 0.25rem;
+  cursor: pointer;
+}
+
+.radio-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--gov-navy-dark);
+}
+
+.radio-text span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Payment box inside form */
+.payment-instruction-box {
+  background: #ffffff;
+  border: 1px solid #c2dbf0;
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.qr-frame {
+  width: 130px;
+  height: 130px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  padding: 6px;
+}
+
+.qr-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pay-info-col {
+  flex: 1;
+  min-width: 250px;
+}
+
+.upi-id-box {
+  background: #f1f5f9;
+  border: 1px dashed var(--gov-navy);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gov-navy-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.btn-submit-enrollment {
+  width: 100%;
+  background: linear-gradient(180deg, #138808, #0e6b05);
+  color: #ffffff;
+  border: 1px solid #0a4d04;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(19, 136, 8, 0.25);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.btn-submit-enrollment:hover {
+  background: #0a4d04;
+  box-shadow: 0 6px 16px rgba(19, 136, 8, 0.35);
+}
+
+/* 10. Official Acknowledgment Receipt (Shown on Submission) */
+.receipt-wrapper {
+  display: none;
+  background: #ffffff;
+  border: 2px solid var(--gov-navy);
+  border-radius: var(--radius-md);
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.receipt-header {
+  text-align: center;
+  border-bottom: 2px solid var(--gov-navy);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.receipt-header h3 {
+  font-size: 1.5rem;
+  color: var(--gov-navy-dark);
+  font-weight: 800;
+}
+
+.receipt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  border-radius: var(--radius-sm);
+}
+
+.receipt-item strong {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.receipt-item span {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gov-navy-dark);
+}
+
+/* 11. Section 35 Government Trap Explanation Table */
+.gov-section35-block {
+  padding: 3rem 0;
+  background: var(--bg-page);
+}
+
+.rule35-table-wrap {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-top: 1.5rem;
+}
+
+.rule35-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.rule35-table th {
+  background: var(--gov-navy);
+  color: #fff;
+  padding: 0.9rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rule35-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+
+.rule35-table tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.rule35-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cell-danger {
+  color: var(--gov-crimson);
+  font-weight: 600;
+}
+
+.cell-safe {
+  color: var(--gov-green-dark);
+  font-weight: 700;
+}
+
+/* 12. FAQ Section */
+.gov-faq-section {
+  padding: 3rem 0;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+}
+
+.faq-accordion {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.faq-question {
+  background: #fafbfc;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  color: var(--gov-navy-dark);
+  font-size: 0.98rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  background: var(--gov-blue-subtle);
+}
+
+.faq-answer {
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  border-top: 1px solid var(--border-color);
+  background: #ffffff;
+}
+
+/* 13. Official Portal Footer */
+.gov-portal-footer {
+  background: var(--gov-navy-dark);
+  color: #cbd5e1;
+  border-top: 4px solid var(--gov-saffron);
+  padding: 3rem 0 1.5rem;
+  font-size: 0.88rem;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 800px) {
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--gov-saffron);
+  padding-bottom: 0.35rem;
+  display: inline-block;
+}
+
+.footer-links-list {
+  list-style: none;
+}
+
+.footer-links-list li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links-list li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links-list li a:hover {
+  color: #fcd34d;
+}
+
+.footer-disclaimer-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}

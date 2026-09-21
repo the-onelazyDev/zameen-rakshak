@@ -78,17 +78,22 @@ async function handleEnrollmentSubmit(e) {
   const utr = document.getElementById('paymentUtr') ? document.getElementById('paymentUtr').value.trim() : '';
 
   if (!applicantPhone || !landKhasra) {
-    alert('कृपया मोबाइल नंबर और गाटा/खसरा संख्या अवश्य भरें।');
+    showGovAlert('कृपया <strong>मोबाइल नंबर</strong> और <strong>गाटा/खसरा संख्या</strong> अवश्य भरें।', 'अधूरी जानकारी (Incomplete Form)');
     return;
   }
 
   if (activePlan === 'RESIDENT_2999' && !utr) {
-    alert('कृपया QR कोड स्कैन करके ₹2,999 का भुगतान करें और बैंक/UPI ऐप (GPay, PhonePe, Paytm) से प्राप्त 12-अंकों का UPI UTR / Transaction No. यहाँ दर्ज करें।');
-    const utrInput = document.getElementById('paymentUtr');
-    if (utrInput) {
-      utrInput.focus();
-      utrInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    showGovAlert(
+      'कृपया QR कोड स्कैन करके <strong>₹2,999</strong> का भुगतान करें और बैंक/UPI ऐप (GPay, PhonePe, Paytm) से प्राप्त <strong>12-अंकों का UPI UTR / Transaction No.</strong> यहाँ दर्ज करें।',
+      '⚠️ भुगतान सत्यापन सूचना (Payment Verification Required)',
+      () => {
+        const utrInput = document.getElementById('paymentUtr');
+        if (utrInput) {
+          utrInput.focus();
+          utrInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    );
     return;
   }
 
@@ -196,4 +201,25 @@ if (langToggleBtn) {
     document.getElementById('langBtnText').textContent = currentLang === 'hi' ? 'English' : 'हिंदी';
     document.documentElement.lang = currentLang;
   });
+}
+
+// Custom Government-Style Alert Modal (No browser alert)
+function showGovAlert(messageHtml, title = 'आवश्यक सूचना (Information Required)', onConfirm = null) {
+  const modal = document.getElementById('govAlertModal');
+  const titleEl = document.getElementById('govModalTitle');
+  const msgEl = document.getElementById('govModalMessage');
+  const btn = document.getElementById('govModalCloseBtn');
+
+  if (titleEl) titleEl.textContent = title;
+  if (msgEl) msgEl.innerHTML = messageHtml;
+  if (modal) modal.style.display = 'flex';
+
+  if (btn) {
+    btn.onclick = () => {
+      if (modal) modal.style.display = 'none';
+      if (typeof onConfirm === 'function') {
+        onConfirm();
+      }
+    };
+  }
 }

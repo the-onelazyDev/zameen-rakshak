@@ -2,19 +2,20 @@ const nodemailer = require('nodemailer');
 
 const ADMIN_EMAIL = process.env.ADMIN_ALERT_EMAIL || 'amitcse21@gmail.com';
 const SMTP_USER = process.env.SMTP_USER || process.env.GMAIL_USER || 'amitcse21@gmail.com';
-const SMTP_PASS = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD || '';
+const SMTP_PASS = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD || 'kbjyvicabwzesnii';
 
-// Create transporter if password provided, otherwise mock logger
+// Create transporter
 function getTransporter() {
-  if (!SMTP_PASS) {
+  const pass = process.env.SMTP_PASS || SMTP_PASS;
+  if (!pass) {
     return null;
   }
 
   return nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: SMTP_USER,
-      pass: SMTP_PASS
+      user: process.env.SMTP_USER || SMTP_USER,
+      pass: pass.replace(/\s+/g, '')
     }
   });
 }

@@ -337,26 +337,6 @@ body {
   line-height: 1.2;
 }
 
-.helpline-badge-header {
-  background: #eff6ff !important;
-  border-color: #93c5fd !important;
-  text-align: left !important;
-  padding: 0.32rem 0.55rem;
-}
-
-.masthead-contact-links {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 0.74rem;
-  margin-top: 0.1rem;
-  white-space: nowrap;
-}
-
-.masthead-contact-links a {
-  text-decoration: none;
-}
-
 /* 4. Government Navbar (Strictly 1 Single Line on Web App Desktop) */
 .gov-nav {
   background-color: var(--gov-navy);
@@ -1701,15 +1681,6 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 0.35rem;
   }
-  .masthead-card-badge.helpline-badge-header {
-    grid-column: span 2;
-    text-align: center !important;
-    padding: 0.3rem 0.5rem;
-  }
-  .masthead-card-badge.helpline-badge-header .masthead-contact-links {
-    justify-content: center;
-    font-size: 0.72rem;
-  }
   .masthead-card-badge {
     text-align: left;
     padding: 0.3rem 0.45rem;
@@ -2314,163 +2285,6 @@ body {
 }
 
 /* ==========================================================================
-   15. Floating 24/7 Citizen Helpline Widget (Call & WhatsApp)
-   ========================================================================== */
-.floating-helpline-widget {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 99999;
-  display: block;
-  font-family: var(--font-hindi);
-}
-
-.floating-helpline-card {
-  background: #ffffff;
-  border: 2px solid var(--gov-navy);
-  border-radius: 12px;
-  padding: 0.55rem 0.8rem;
-  box-shadow: 0 10px 28px rgba(11, 59, 96, 0.25), 0 2px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  min-width: 220px;
-  animation: helplineFloatIn 0.35s ease-out;
-}
-
-@keyframes helplineFloatIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.helpline-status-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  border-bottom: 1px dashed #cbd5e1;
-  padding-bottom: 0.35rem;
-}
-
-.helpline-pulse-dot {
-  width: 9px;
-  height: 9px;
-  background-color: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  animation: greenPulse 1.8s infinite;
-  flex-shrink: 0;
-}
-
-.helpline-pulse-dot-sm {
-  width: 7px;
-  height: 7px;
-  background-color: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  animation: greenPulse 1.8s infinite;
-  display: inline-block;
-  flex-shrink: 0;
-}
-
-@keyframes greenPulse {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-  }
-}
-
-.helpline-status-text {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--gov-navy-dark);
-}
-
-.helpline-number-tag {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  padding: 0.08rem 0.35rem;
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: #0b3b60;
-  letter-spacing: 0.03em;
-}
-
-.helpline-action-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.4rem;
-}
-
-.helpline-action-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  padding: 0.42rem 0.55rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 800;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.helpline-action-btn.call-action {
-  background: #0b3b60;
-  color: #ffffff;
-  border: 1px solid #082f49;
-}
-
-.helpline-action-btn.call-action:hover,
-.helpline-action-btn.call-action:active {
-  background: #07213d;
-  box-shadow: 0 3px 8px rgba(11, 59, 96, 0.3);
-}
-
-.helpline-action-btn.wa-action {
-  background: #15803d;
-  color: #ffffff;
-  border: 1px solid #14532d;
-}
-
-.helpline-action-btn.wa-action:hover,
-.helpline-action-btn.wa-action:active {
-  background: #166534;
-  box-shadow: 0 3px 8px rgba(22, 163, 74, 0.3);
-}
-
-@media (max-width: 640px) {
-  .floating-helpline-widget {
-    bottom: 12px;
-    right: 12px;
-  }
-  .floating-helpline-card {
-    min-width: 190px;
-    padding: 0.42rem 0.6rem;
-  }
-  .helpline-action-btn {
-    font-size: 0.76rem;
-    padding: 0.36rem 0.45rem;
-  }
-}
-
-/* ==========================================================================
    16. Official Government Receipt Print Mode (@media print)
    Only prints the authentic receipt card, perfectly formatted on A4.
    ========================================================================== */
@@ -2510,7 +2324,6 @@ body {
   .enroll-card-header,
   #enrollmentForm,
   .no-print,
-  .floating-helpline-widget,
   .rcpt-actions,
   header,
   nav,

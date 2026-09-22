@@ -296,6 +296,124 @@ function showGovAlert(messageHtml, title = 'आवश्यक सूचना (
   }
 }
 
+// 8. Navigation & Mobile Drawer Handlers
+function toggleMobileMenu(forceState) {
+  const drawer = document.getElementById('navMobileDrawer');
+  const icon = document.getElementById('hamburgerIcon');
+  const text = document.getElementById('hamburgerText');
+  const btn = document.getElementById('navHamburgerBtn');
+  if (!drawer) return;
+
+  const shouldOpen = typeof forceState === 'boolean' 
+    ? forceState 
+    : (drawer.style.display === 'none' || !drawer.style.display);
+
+  if (shouldOpen) {
+    drawer.style.display = 'block';
+    if (icon) icon.textContent = '✕';
+    if (text) text.textContent = 'बंद करें';
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+  } else {
+    drawer.style.display = 'none';
+    if (icon) icon.textContent = '☰';
+    if (text) text.textContent = 'मेनू (Menu)';
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  }
+}
+
+function setActiveNavTab(targetHash) {
+  const allNavLinks = document.querySelectorAll('#mainNavList a');
+  allNavLinks.forEach(link => {
+    if (link.getAttribute('href') === targetHash) {
+      link.classList.add('active');
+      // Scroll chip into view smoothly on mobile
+      try {
+        link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      } catch (e) {}
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+function handleNavClick(event, element, planKey) {
+  const targetHash = element.getAttribute('href');
+  setActiveNavTab(targetHash);
+
+  if (planKey) {
+    setFormPlan(planKey);
+  }
+}
+
+function handleMobileNavClick(event, element, targetHash, planKey) {
+  toggleMobileMenu(false);
+
+  if (planKey) {
+    setFormPlan(planKey);
+  }
+
+  setActiveNavTab(targetHash);
+
+  const targetEl = document.querySelector(targetHash);
+  if (targetEl) {
+    targetEl.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Close mobile drawer when clicking outside
+document.addEventListener('click', function(event) {
+  const nav = document.getElementById('mainGovNav');
+  const drawer = document.getElementById('navMobileDrawer');
+  if (drawer && drawer.style.display === 'block') {
+    if (nav && !nav.contains(event.target)) {
+      toggleMobileMenu(false);
+    }
+  }
+});
+
+// Close mobile drawer on Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    toggleMobileMenu(false);
+  }
+});
+
+// URL Parameter Handling on Load (?selectedPlan=RESIDENT_2999 or ?selectedPlan=NRI_120USD)
+try {
+  const urlParams = new URLSearchParams(window.location.search);
+  const planParam = urlParams.get('selectedPlan');
+  if (planParam && (planParam === 'RESIDENT_2999' || planParam === 'NRI_120USD')) {
+    setFormPlan(planParam);
+  }
+  if (window.location.hash) {
+    setActiveNavTab(window.location.hash);
+  }
+} catch (e) {}
+
+// Section Scroll Spy for Active Navigation Highlight
+if ('IntersectionObserver' in window) {
+  const spySections = document.querySelectorAll('main section[id], #home');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        if (id) {
+          const matchingLink = document.querySelector(`#mainNavList a[href="#${id}"]`);
+          if (matchingLink) {
+            document.querySelectorAll('#mainNavList a').forEach(l => l.classList.remove('active'));
+            matchingLink.classList.add('active');
+          }
+        }
+      }
+    });
+  }, {
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  });
+
+  spySections.forEach(section => observer.observe(section));
+}
+
 // Global Window Exports
 window.handleEnrollmentSubmit = handleEnrollmentSubmit;
 window.setFormPlan = setFormPlan;
@@ -303,3 +421,7 @@ window.selectPlanAndScroll = selectPlanAndScroll;
 window.showGovAlert = showGovAlert;
 window.startNewEnrollment = startNewEnrollment;
 window.clearEnrollmentForm = clearEnrollmentForm;
+window.toggleMobileMenu = toggleMobileMenu;
+window.handleNavClick = handleNavClick;
+window.handleMobileNavClick = handleMobileNavClick;
+window.setActiveNavTab = setActiveNavTab;

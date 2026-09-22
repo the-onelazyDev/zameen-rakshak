@@ -60,6 +60,16 @@ html {
   overflow-x: hidden;
 }
 
+#home,
+#plansSection,
+#rule35Section,
+#enrollSection,
+#faqSection,
+section[id],
+main[id] {
+  scroll-margin-top: 85px;
+}
+
 body {
   background-color: var(--bg-page);
   color: var(--text-main);
@@ -244,45 +254,94 @@ body {
   color: var(--text-muted);
 }
 
-/* 4. Government Navbar */
+/* 4. Government Navbar (Strictly 1 Single Line on Web App Desktop) */
 .gov-nav {
   background-color: var(--gov-navy);
   border-bottom: 3px solid var(--gov-saffron);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+
+.nav-mobile-bar {
+  display: none; /* Hidden on desktop screens */
+}
+
+.nav-mobile-drawer {
+  display: none; /* Hidden on desktop screens */
+}
+
+.nav-scroll-wrapper {
+  width: 100%;
+  display: flex;
 }
 
 .nav-list {
   display: flex;
+  flex-wrap: nowrap !important; /* STRICTLY ONE LINE */
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   list-style: none;
-  flex-wrap: wrap;
-  gap: 0;
+}
+
+.nav-list li {
+  flex: 1 1 0px; /* Equal proportional distribution across 100% width */
+  min-width: 0;
+  display: flex;
 }
 
 .nav-list li a {
-  display: block;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap !important; /* Strictly prevents breaking into 2nd line */
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.92rem;
-  padding: 0.85rem 1.15rem;
-  transition: all 0.2s;
+  font-size: clamp(0.72rem, 0.94vw, 0.90rem);
+  padding: 0.85rem clamp(0.2rem, 0.6vw, 0.85rem);
+  transition: all 0.18s ease-in-out;
   border-right: 1px solid rgba(255, 255, 255, 0.12);
+  letter-spacing: -0.01em;
+}
+
+.nav-list li:last-child a {
+  border-right: none;
 }
 
 .nav-list li a:hover,
 .nav-list li a.active {
   background-color: var(--gov-navy-dark);
   color: #ffdd99;
+  box-shadow: inset 0 -3px 0 var(--gov-saffron);
 }
 
 .nav-list li a.nri-tab {
   background-color: #082949;
-  color: #8ce1a4;
-  border-left: 1px solid rgba(255,255,255,0.12);
+  color: #86efac;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  font-weight: 700;
 }
 
-.nav-list li a.nri-tab:hover {
+.nav-list li a.nri-tab:hover,
+.nav-list li a.nri-tab.active {
   background-color: #051a30;
   color: #a4f5ba;
+  box-shadow: inset 0 -3px 0 #10b981;
 }
 
 /* 5. Ticker / Marquee */
@@ -1528,23 +1587,253 @@ body {
     font-size: 0.72rem;
   }
 
-  /* 3. Horizontal Touch-Scrollable Government Nav Bar */
-  .gov-nav {
+  /* 3. Highly Accessible Mobile Navigation (Drawer + Swipeable Pills) */
+  .nav-container {
+    padding: 0 !important;
+  }
+
+  .nav-mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.85rem;
+    background: var(--gov-navy-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .nav-mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .nav-mobile-flag {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .nav-mobile-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-hamburger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+    padding: 0.38rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+
+  .nav-hamburger-btn:hover,
+  .nav-hamburger-btn:active {
+    background: var(--gov-saffron);
+    color: #07213d;
+    border-color: var(--gov-saffron);
+  }
+
+  .hamburger-icon {
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  .hamburger-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .nav-scroll-wrapper {
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    padding: 0.45rem 0.75rem;
+    background: var(--gov-navy);
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
   }
-  .gov-nav::-webkit-scrollbar {
+
+  .nav-scroll-wrapper::-webkit-scrollbar {
     display: none;
   }
+
   .nav-list {
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
     width: max-content;
+    gap: 0.45rem;
   }
+
+  .nav-list li {
+    flex: 0 0 auto;
+  }
+
   .nav-list li a {
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 0.44rem 0.9rem !important;
+    font-size: 0.82rem !important;
+    color: #f1f5f9;
+    box-shadow: none !important;
+  }
+
+  .nav-list li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .nav-list li a.active {
+    background: var(--gov-saffron) !important;
+    color: #07213d !important;
+    font-weight: 700;
+    border-color: var(--gov-saffron) !important;
+  }
+
+  .nav-list li a.nri-tab {
+    background: rgba(16, 185, 129, 0.18) !important;
+    color: #86efac !important;
+    border-color: rgba(52, 211, 153, 0.45) !important;
+  }
+
+  .nav-list li a.nri-tab.active {
+    background: #10b981 !important;
+    color: #ffffff !important;
+  }
+
+  /* Mobile Slide-Down Full Navigation Drawer */
+  .nav-mobile-drawer {
+    background: #ffffff;
+    border-top: 1px solid #cbd5e1;
+    border-bottom: 4px solid var(--gov-saffron);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+    animation: drawerSlideDown 0.22s ease-out;
+  }
+
+  @keyframes drawerSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-drawer-inner {
+    padding: 0.75rem 0.85rem 1rem;
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+
+  .mobile-drawer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.65rem;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--gov-navy);
+  }
+
+  .drawer-close-btn {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #475569;
+    transition: all 0.2s ease;
+  }
+
+  .drawer-close-btn:active,
+  .drawer-close-btn:hover {
+    background: var(--gov-crimson-light);
+    color: var(--gov-crimson);
+    border-color: var(--gov-crimson);
+  }
+
+  .mobile-drawer-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .mobile-drawer-list li a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     padding: 0.75rem 0.85rem;
-    font-size: 0.84rem;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #0f172a;
+    transition: all 0.18s ease;
+  }
+
+  .mobile-drawer-list li a:active,
+  .mobile-drawer-list li a:hover {
+    background: #eff6ff;
+    border-color: var(--gov-navy);
+    transform: translateX(2px);
+  }
+
+  .drawer-icon {
+    font-size: 1.35rem;
+    flex-shrink: 0;
+  }
+
+  .drawer-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    text-align: left;
+  }
+
+  .drawer-text strong {
+    font-size: 0.88rem;
+    color: var(--gov-navy-dark);
+    font-weight: 700;
+  }
+
+  .drawer-text small {
+    font-size: 0.74rem;
+    color: #64748b;
+  }
+
+  .drawer-arrow {
+    font-size: 1.3rem;
+    color: #94a3b8;
+    font-weight: 700;
+  }
+
+  .drawer-nri-item {
+    background: #f0fdf4 !important;
+    border-color: #bbf7d0 !important;
+  }
+
+  .drawer-nri-item .drawer-text strong {
+    color: #0f766e !important;
   }
 
   /* 4. Ticker */

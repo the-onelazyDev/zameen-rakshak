@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/assets/govt_logo.png">
 
-  <link rel="stylesheet" href="/css/style.css?v=20260922_08">
+  <link rel="stylesheet" href="/css/style.css?v=20260922_09">
   <link rel="icon" type="image/png" href="/assets/govt_logo.png">
 </head>
 <body>
@@ -67,17 +67,106 @@
     </div>
   </header>
 
-  <!-- 4. Primary Navigation Bar -->
-  <nav class="gov-nav" aria-label="Main Navigation">
-    <div class="container">
-      <ul class="nav-list">
-        <li><a href="#home" class="active">मुख्य पृष्ठ (Home)</a></li>
-        <li><a href="#plansSection">24/7 सुरक्षा योजना (₹2,999/वर्ष)</a></li>
-        <li><a href="#plansSection" class="nri-tab">🌍 एनआरआई डेस्क ($120/yr)</a></li>
-        <li><a href="#rule35Section">धारा 35 नियम (Legal Trap)</a></li>
-        <li><a href="#enrollSection">नागरिक पंजीकरण (Enrollment)</a></li>
-        <li><a href="#faqSection">प्रायः पूछे जाने वाले प्रश्न (FAQ)</a></li>
-      </ul>
+  <!-- 4. Primary Navigation Bar (Strictly 1 Line on Desktop, Highly Accessible UI/UX on Mobile) -->
+  <nav class="gov-nav" id="mainGovNav" aria-label="Main Navigation">
+    <div class="container nav-container">
+      
+      <!-- Mobile Quick Bar: Flag & Hamburger Button -->
+      <div class="nav-mobile-bar">
+        <div class="nav-mobile-brand">
+          <span class="nav-mobile-flag">🇮🇳</span>
+          <span class="nav-mobile-title">मुख्य नेविगेशन मेनू</span>
+        </div>
+        <button type="button" class="nav-hamburger-btn" id="navHamburgerBtn" onclick="toggleMobileMenu()" aria-label="नेविगेशन मेनू खोलें / बंद करें" aria-expanded="false">
+          <span class="hamburger-icon" id="hamburgerIcon">☰</span>
+          <span class="hamburger-text" id="hamburgerText">मेनू (Menu)</span>
+        </button>
+      </div>
+
+      <!-- Navigation Track: Strictly 1 Line on Desktop, Swipeable Chips on Mobile -->
+      <div class="nav-scroll-wrapper" id="navScrollWrapper">
+        <ul class="nav-list" id="mainNavList">
+          <li><a href="#home" class="active" onclick="handleNavClick(event, this)">मुख्य पृष्ठ (Home)</a></li>
+          <li><a href="#plansSection" onclick="handleNavClick(event, this)">24/7 सुरक्षा योजना (₹2,999/वर्ष)</a></li>
+          <li><a href="#plansSection" class="nri-tab" onclick="handleNavClick(event, this, 'NRI_120USD')">🌍 एनआरआई डेस्क ($120/yr)</a></li>
+          <li><a href="#rule35Section" onclick="handleNavClick(event, this)">धारा 35 नियम (Legal Trap)</a></li>
+          <li><a href="#enrollSection" onclick="handleNavClick(event, this)">नागरिक पंजीकरण (Enrollment)</a></li>
+          <li><a href="#faqSection" onclick="handleNavClick(event, this)">प्रायः पूछे जाने वाले प्रश्न (FAQ)</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Mobile Full Navigation Dropdown Drawer -->
+    <div class="nav-mobile-drawer" id="navMobileDrawer" style="display: none;">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-drawer-top">
+          <span>🇮🇳 डिजिटल भूलेख सुरक्षा सेवाएं</span>
+          <button type="button" class="drawer-close-btn" onclick="toggleMobileMenu(false)" aria-label="Close">✕</button>
+        </div>
+        <ul class="mobile-drawer-list">
+          <li>
+            <a href="#home" onclick="handleMobileNavClick(event, this, '#home')">
+              <span class="drawer-icon">🏛️</span>
+              <div class="drawer-text">
+                <strong>मुख्य पृष्ठ (Home)</strong>
+                <small>पोर्टल का मुख्य पृष्ठ व प्रमुख सुविधाएं</small>
+              </div>
+              <span class="drawer-arrow">›</span>
+            </a>
+          </li>
+          <li>
+            <a href="#plansSection" onclick="handleMobileNavClick(event, this, '#plansSection', 'RESIDENT_2999')">
+              <span class="drawer-icon">🛡️</span>
+              <div class="drawer-text">
+                <strong>24/7 सुरक्षा योजना (₹2,999/वर्ष)</strong>
+                <small>भारतीय निवासी भूस्वामियों हेतु वार्षिक सुरक्षा कवच</small>
+              </div>
+              <span class="drawer-arrow">›</span>
+            </a>
+          </li>
+          <li>
+            <a href="#plansSection" class="drawer-nri-item" onclick="handleMobileNavClick(event, this, '#plansSection', 'NRI_120USD')">
+              <span class="drawer-icon">🌍</span>
+              <div class="drawer-text">
+                <strong>एनआरआई डेस्क ($120/yr)</strong>
+                <small>प्रवासी भारतीयों हेतु अंतरराष्ट्रीय भूमि सुरक्षा</small>
+              </div>
+              <span class="drawer-arrow">›</span>
+            </a>
+          </li>
+          <li>
+            <a href="#rule35Section" onclick="handleMobileNavClick(event, this, '#rule35Section')">
+              <span class="drawer-icon">⚖️</span>
+              <div class="drawer-text">
+                <strong>धारा 35 नियम (Legal Trap)</strong>
+                <small>30-दिवसीय दाखिल-खारिज समयावधि विश्लेषण</small>
+              </div>
+              <span class="drawer-arrow">›</span>
+            </a>
+          </li>
+          <li>
+            <a href="#enrollSection" onclick="handleMobileNavClick(event, this, '#enrollSection')">
+              <span class="drawer-icon">📝</span>
+              <div class="drawer-text">
+                <strong>नागरिक पंजीकरण (Enrollment)</strong>
+                <small>भूमि सुरक्षा व 24/7 निगरानी हेतु नया पंजीकरण</small>
+              </div>
+              <span class="drawer-arrow">›</span>
+            </a>
+          </li>
+          <li>
+            <a href="#faqSection" onclick="handleMobileNavClick(event, this, '#faqSection')">
+              <span class="drawer-icon">❓</span>
+              <div class="drawer-text">
+                <strong>प्रायः पूछे जाने वाले प्रश्न (FAQ)</strong>
+                <small>अक्सर पूछे जाने वाले प्रश्न व सहायता केंद्र</small>
+              </div>
+              <span class="drawer-arrow">›</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -787,8 +876,7 @@
     </div>
   </div>
 
-  <!-- Clean, Lightweight Client Logic with Cache-Busting -->
-  <script src="/js/app.js?v=20260922_08"></script>
+  <script src="/js/app.js?v=20260922_09"></script>
   <script>
     // Ensure startNewEnrollment is directly available on window
     if (!window.startNewEnrollment) {

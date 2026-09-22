@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Disallow internal API endpoints & temporary generated files
+Disallow: /api/
+Disallow: /petitions/
+
+# Host and Sitemap
+Host: https://www.zameensevakendra.in
+Sitemap: https://www.zameensevakendra.in/sitemap.xml

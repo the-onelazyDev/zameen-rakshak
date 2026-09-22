@@ -288,7 +288,7 @@
 
           <div class="enroll-form-body">
             
-            <form id="enrollmentForm" onsubmit="handleEnrollmentSubmit(event)">
+            <form id="enrollmentForm" onsubmit="handleEnrollmentSubmit(event)" autocomplete="off">
               
               <!-- Step 1: Select Plan -->
               <fieldset class="form-fieldset">
@@ -702,7 +702,38 @@
     </div>
   </div>
 
-  <!-- Clean, Lightweight Client Logic (No Bloated DOM Virtualization) -->
-  <script src="/js/app.js"></script>
+  <!-- Clean, Lightweight Client Logic with Cache-Busting -->
+  <script src="/js/app.js?v=20260922_03"></script>
+  <script>
+    // Ensure startNewEnrollment is directly available on window
+    if (!window.startNewEnrollment) {
+      window.startNewEnrollment = function() {
+        var form = document.getElementById('enrollmentForm');
+        if (form) form.reset();
+        var ids = ['applicantName', 'applicantPhone', 'applicantEmail', 'landDistrict', 'landTehsil', 'landVillage', 'landKhasra', 'paymentUtr'];
+        ids.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) { el.value = ''; el.defaultValue = ''; el.removeAttribute('value'); }
+        });
+        var allInputs = document.querySelectorAll('#enrollmentForm input');
+        allInputs.forEach(function(inp) {
+          if (inp.type !== 'radio' && inp.type !== 'submit' && inp.type !== 'button') {
+            inp.value = '';
+            inp.defaultValue = '';
+            inp.removeAttribute('value');
+          }
+        });
+        var rcpt = document.getElementById('officialReceiptCard');
+        if (rcpt) rcpt.style.display = 'none';
+        if (form) form.style.display = 'block';
+        var sec = document.getElementById('enrollSection');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(function() {
+          var nameInp = document.getElementById('applicantName');
+          if (nameInp) nameInp.focus();
+        }, 200);
+      };
+    }
+  </script>
 </body>
 </html>

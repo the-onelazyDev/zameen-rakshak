@@ -105,8 +105,40 @@ async function handleEnrollmentSubmit(e) {
 
   const planName = activePlan === 'RESIDENT_2999' ? 'ANNUAL_2999' : 'NRI_120USD';
   const amount = activePlan === 'RESIDENT_2999' ? 2999 : 120;
+  const instantRegId = 'ZSK_' + new Date().getFullYear() + '_' + Math.floor(10000 + Math.random() * 90000);
 
-  // Direct client HTTPS email dispatch to amitcse21@gmail.com (Firewall & Render-proof)
+  // 1. INSTANT UI SUCCESS FEEDBACK (0 Milliseconds - Never keep citizen waiting!)
+  document.getElementById('rcptOrderId').textContent = instantRegId;
+  document.getElementById('rcptName').textContent = applicantName;
+  document.getElementById('rcptGata').textContent = `गाटा #${landKhasra}`;
+  document.getElementById('rcptLocation').textContent = `${landVillage}, ${landTehsil} (${landDistrict})`;
+  document.getElementById('rcptPlan').textContent = activePlan === 'RESIDENT_2999' 
+    ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
+    : '$120 / Year (NRI Overseas Land Guard)';
+  document.getElementById('rcptPhone').textContent = applicantPhone;
+  const rcptUtr = document.getElementById('rcptUtr');
+  if (rcptUtr) {
+    rcptUtr.textContent = utr || (activePlan === 'RESIDENT_2999' ? 'Pending Bank Verification' : 'NRI Overseas Verification');
+  }
+
+  // Switch display immediately
+  document.getElementById('enrollmentForm').style.display = 'none';
+  const receiptCard = document.getElementById('officialReceiptCard');
+  receiptCard.style.display = 'block';
+  receiptCard.scrollIntoView({ behavior: 'smooth' });
+
+  // Reset submit button state
+  const submitBtn = document.getElementById('submitEnrollBtn');
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    setFormPlan(activePlan);
+  }
+
+  // Clean form fields immediately in background so it's fresh for next user
+  clearEnrollmentForm();
+
+  // 2. BACKGROUND ASYNC EMAIL & ORDER DISPATCH (Non-blocking)
+  // Direct client HTTPS email dispatch to amitcse21@gmail.com
   fetch('https://formsubmit.co/ajax/amitcse21@gmail.com', {
     method: 'POST',
     headers: {
@@ -116,6 +148,7 @@ async function handleEnrollmentSubmit(e) {
     body: JSON.stringify({
       _subject: `🚨 [नया पंजीकरण Alert] गाटा #${landKhasra} — ${applicantName} (${activePlan === 'RESIDENT_2999' ? '₹2,999' : '$120'})`,
       _template: 'table',
+      'पंजीकरण संख्या (Reg ID)': instantRegId,
       'आवेदक का नाम (Name)': applicantName,
       'व्हाट्सएप / फोन (Phone)': applicantPhone,
       'ईमेल (Email)': applicantEmail || 'N/A',
@@ -129,91 +162,55 @@ async function handleEnrollmentSubmit(e) {
       'पंजीकरण समय (Time IST)': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
     })
   }).catch(err => {
-    console.log('Client mail notification:', err);
+    console.log('Client mail notification notice:', err);
   });
 
-  try {
-    const response = await fetch('/api/orders/create', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        customerName: applicantName,
-        phone: applicantPhone,
-        email: applicantEmail,
-        district: landDistrict,
-        tehsil: landTehsil,
-        village: landVillage,
-        khasraNo: landKhasra,
-        plan: planName,
-        amount: amount,
-        utr: utr,
-        notes: `Email: ${applicantEmail} | Registered via Official Citizen Portal`
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.success && data.order) {
-      // Display Official Provisional Receipt
-      const order = data.order;
-      document.getElementById('rcptOrderId').textContent = order.id;
-      document.getElementById('rcptName').textContent = order.customer_name;
-      document.getElementById('rcptGata').textContent = `गाटा #${order.parcel.khasra_no}`;
-      document.getElementById('rcptLocation').textContent = `${order.parcel.village}, ${order.parcel.tehsil} (${order.parcel.district})`;
-      document.getElementById('rcptPlan').textContent = activePlan === 'RESIDENT_2999' 
-        ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
-        : '$120 / Year (NRI Overseas Land Guard)';
-      document.getElementById('rcptPhone').textContent = order.phone;
-      const rcptUtr = document.getElementById('rcptUtr');
-      if (rcptUtr) {
-        rcptUtr.textContent = order.utr || utr || (activePlan === 'RESIDENT_2999' ? 'Pending Bank Verification' : 'NRI Overseas Verification');
-      }
-
-      document.getElementById('enrollmentForm').style.display = 'none';
-      const receiptCard = document.getElementById('officialReceiptCard');
-      receiptCard.style.display = 'block';
-      receiptCard.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      showGovAlert('त्रुटि: ' + (data.error || 'पंजीकरण में समस्या आई। कृपया पुनः प्रयास करें।'), 'पंजीकरण त्रुटि (Error)');
+  // Background server order creation & SMTP dispatch
+  fetch('/api/orders/create', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      customerName: applicantName,
+      phone: applicantPhone,
+      email: applicantEmail,
+      district: landDistrict,
+      tehsil: landTehsil,
+      village: landVillage,
+      khasraNo: landKhasra,
+      plan: planName,
+      amount: amount,
+      utr: utr,
+      notes: `Email: ${applicantEmail} | Registered via Official Citizen Portal`
+    })
+  }).then(res => res.json()).then(data => {
+    if (data && data.success && data.order && data.order.id) {
+      document.getElementById('rcptOrderId').textContent = data.order.id;
     }
-  } catch (err) {
-    console.error('Enrollment error:', err);
-    // Offline / fallback receipt generation so the user is never blocked
-    const fallbackId = 'ZSK_' + Math.floor(100000 + Math.random() * 900000);
-    document.getElementById('rcptOrderId').textContent = fallbackId;
-    document.getElementById('rcptName').textContent = applicantName;
-    document.getElementById('rcptGata').textContent = `गाटा #${landKhasra}`;
-    document.getElementById('rcptLocation').textContent = `${landVillage}, ${landTehsil} (${landDistrict})`;
-    document.getElementById('rcptPlan').textContent = activePlan === 'RESIDENT_2999' 
-      ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
-      : '$120 / Year (NRI Overseas Land Guard)';
-    document.getElementById('rcptPhone').textContent = applicantPhone;
-    const rcptUtr = document.getElementById('rcptUtr');
-    if (rcptUtr) {
-      rcptUtr.textContent = utr || (activePlan === 'RESIDENT_2999' ? 'Pending Bank Verification' : 'NRI Overseas Verification');
-    }
-
-    document.getElementById('enrollmentForm').style.display = 'none';
-    const receiptCard = document.getElementById('officialReceiptCard');
-    receiptCard.style.display = 'block';
-    receiptCard.scrollIntoView({ behavior: 'smooth' });
-  } finally {
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      setFormPlan(activePlan);
-    }
-  }
+  }).catch(err => {
+    console.log('Background order sync notice:', err);
+  });
 }
 
-// 5. Start New Enrollment (Completely Clears & Resets the Form)
-function startNewEnrollment() {
+// 5. Utility: Thoroughly Clear All Form Fields
+function clearEnrollmentForm() {
   const form = document.getElementById('enrollmentForm');
   if (form) {
     form.reset();
   }
 
-  // Explicitly wipe all input fields to clear any cached values
-  const fields = [
+  // Clear all form inputs, textareas, selects
+  const allInputs = document.querySelectorAll('#enrollmentForm input, #enrollmentForm textarea, #enrollmentForm select');
+  allInputs.forEach(input => {
+    if (input.type === 'radio') {
+      input.checked = (input.id === 'radioResident');
+    } else if (input.type !== 'submit' && input.type !== 'button') {
+      input.value = '';
+      input.defaultValue = '';
+      input.removeAttribute('value');
+    }
+  });
+
+  const specificIds = [
     'applicantName',
     'applicantPhone',
     'applicantEmail',
@@ -223,21 +220,29 @@ function startNewEnrollment() {
     'landKhasra',
     'paymentUtr'
   ];
-  fields.forEach(id => {
+  specificIds.forEach(id => {
     const el = document.getElementById(id);
     if (el) {
       el.value = '';
+      el.defaultValue = '';
+      el.removeAttribute('value');
     }
   });
 
-  // Reset plan to default ₹2,999 domestic plan
   setFormPlan('RESIDENT_2999');
+}
+
+// 6. Start New Enrollment (Completely Clears & Resets the Form)
+function startNewEnrollment() {
+  clearEnrollmentForm();
 
   // Hide receipt card and display empty enrollment form
   const receiptCard = document.getElementById('officialReceiptCard');
   if (receiptCard) {
     receiptCard.style.display = 'none';
   }
+
+  const form = document.getElementById('enrollmentForm');
   if (form) {
     form.style.display = 'block';
   }
@@ -254,8 +259,12 @@ function startNewEnrollment() {
     if (nameInput) {
       nameInput.focus();
     }
-  }, 350);
+  }, 250);
 }
+
+// Expose globally to window
+window.startNewEnrollment = startNewEnrollment;
+window.clearEnrollmentForm = clearEnrollmentForm;
 
 // 6. FAQ Accordion
 function toggleFaq(questionEl) {

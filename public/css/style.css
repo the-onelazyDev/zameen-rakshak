@@ -100,56 +100,74 @@ body {
   border-bottom: 1px solid var(--border-color);
   font-size: 0.8rem;
   color: var(--text-muted);
-  padding: 0.35rem 0;
+  padding: 0.25rem 0;
+  line-height: 1.25;
 }
 
 .top-utility-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-wrap: nowrap !important; /* STRICTLY 1 SINGLE LINE */
+  gap: 0.6rem;
+  max-width: 1360px;
 }
 
 .utility-left {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  flex-shrink: 1;
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .gov-badge {
   background: #fff;
   border: 1px solid #cbd5e1;
-  padding: 0.15rem 0.5rem;
+  padding: 0.12rem 0.45rem;
   border-radius: var(--radius-sm);
   font-weight: 700;
   color: var(--gov-navy);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.utility-tagline {
+  font-size: 0.73rem;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .utility-right {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .utility-helpline-chips {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
+  white-space: nowrap;
 }
 
 .top-helpline-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
   background: #ffffff;
   border: 1px solid #cbd5e1;
-  padding: 0.18rem 0.55rem;
+  padding: 0.14rem 0.45rem;
   border-radius: 4px;
   text-decoration: none;
   color: var(--gov-navy-dark);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 700;
   transition: all 0.15s ease;
   white-space: nowrap;
@@ -173,17 +191,23 @@ body {
   color: #166534;
 }
 
+.utility-date {
+  font-size: 0.72rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
 .accessibility-controls {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .acc-btn {
   background: #fff;
   border: 1px solid #cbd5e1;
-  padding: 0.1rem 0.4rem;
-  font-size: 0.75rem;
+  padding: 0.08rem 0.35rem;
+  font-size: 0.72rem;
   font-weight: 700;
   cursor: pointer;
   border-radius: 3px;
@@ -198,15 +222,15 @@ body {
 .lang-toggle-btn {
   background: #fff;
   border: 1px solid #cbd5e1;
-  padding: 0.2rem 0.6rem;
+  padding: 0.14rem 0.5rem;
   border-radius: var(--radius-sm);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   cursor: pointer;
   color: var(--gov-navy);
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 .lang-toggle-btn:hover {
@@ -217,7 +241,7 @@ body {
 /* 3. Official Masthead (Logo & Department Title) */
 .gov-masthead {
   background: #ffffff;
-  padding: 1.25rem 0;
+  padding: 0.45rem 0; /* Extremely compact height - prevents header pushing page down */
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -225,87 +249,112 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-wrap: nowrap !important; /* STRICTLY 1 SINGLE LINE - NOT BELOW */
+  gap: 0.85rem;
+  max-width: 1360px;
 }
 
 .masthead-brand {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 0.75rem;
   text-decoration: none;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .gov-emblem-img {
-  width: 78px;
-  height: 78px;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
   border-radius: 50%;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  flex-shrink: 0;
+}
+
+.masthead-text {
+  min-width: 0;
 }
 
 .masthead-text h1 {
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--gov-navy-dark);
   line-height: 1.15;
   letter-spacing: -0.01em;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .masthead-sub-en {
-  font-size: 0.88rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--gov-saffron-dark);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-top: 0.15rem;
+  margin-top: 0.08rem;
   font-family: var(--font-main);
+  white-space: nowrap;
 }
 
 .masthead-desc {
-  font-size: 0.85rem;
+  font-size: 0.73rem;
   color: var(--text-muted);
-  margin-top: 0.15rem;
+  margin-top: 0.08rem;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .masthead-badges {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  flex-wrap: nowrap !important; /* STRICTLY SAME LINE - NEVER WRAPS BELOW */
 }
 
 .masthead-card-badge {
   background: var(--gov-blue-subtle);
   border: 1px solid #c2dbf0;
-  padding: 0.6rem 0.9rem;
-  border-radius: var(--radius-md);
+  padding: 0.32rem 0.55rem;
+  border-radius: var(--radius-sm);
   text-align: right;
+  white-space: nowrap;
 }
 
 .masthead-card-badge strong {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.76rem;
   color: var(--gov-navy);
+  line-height: 1.2;
 }
 
 .masthead-card-badge span {
-  font-size: 0.75rem;
+  font-size: 0.67rem;
   color: var(--text-muted);
+  line-height: 1.2;
 }
 
 .helpline-badge-header {
   background: #eff6ff !important;
   border-color: #93c5fd !important;
   text-align: left !important;
+  padding: 0.32rem 0.55rem;
 }
 
 .masthead-contact-links {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.8rem;
-  margin-top: 0.2rem;
+  gap: 0.25rem;
+  font-size: 0.74rem;
+  margin-top: 0.1rem;
+  white-space: nowrap;
+}
+
+.masthead-contact-links a {
+  text-decoration: none;
 }
 
 /* 4. Government Navbar (Strictly 1 Single Line on Web App Desktop) */
@@ -1588,69 +1637,88 @@ body {
   }
 
   /* 1. Top Utility Bar */
+  .top-utility-bar {
+    padding: 0.2rem 0;
+  }
   .top-utility-wrap {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap !important;
+    gap: 0.35rem;
   }
   .utility-left {
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    font-size: 0.75rem;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  .utility-left .utility-tagline {
+    display: none;
   }
   .utility-right {
-    width: 100%;
-    justify-content: space-between;
-    font-size: 0.75rem;
+    width: auto;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    gap: 0.35rem;
+  }
+  .utility-right .utility-date {
+    display: none;
+  }
+  .accessibility-controls {
+    display: none;
   }
 
   /* 2. Official Masthead */
+  .gov-masthead {
+    padding: 0.4rem 0;
+  }
   .masthead-wrap {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.85rem;
+    gap: 0.4rem;
   }
   .masthead-brand {
-    gap: 0.85rem;
+    gap: 0.6rem;
     align-items: center;
   }
   .gov-emblem-img {
-    width: 62px;
-    height: 62px;
+    width: 44px;
+    height: 44px;
   }
   .masthead-text h1 {
-    font-size: 1.45rem;
-    line-height: 1.2;
+    font-size: 1.25rem;
+    line-height: 1.15;
   }
   .masthead-sub-en {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
   }
   .masthead-desc {
-    font-size: 0.78rem;
-    line-height: 1.35;
+    font-size: 0.68rem;
+    line-height: 1.25;
   }
   .masthead-badges {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    gap: 0.35rem;
   }
   .masthead-card-badge.helpline-badge-header {
     grid-column: span 2;
     text-align: center !important;
+    padding: 0.3rem 0.5rem;
   }
   .masthead-card-badge.helpline-badge-header .masthead-contact-links {
     justify-content: center;
+    font-size: 0.72rem;
   }
   .masthead-card-badge {
     text-align: left;
-    padding: 0.45rem 0.65rem;
+    padding: 0.3rem 0.45rem;
   }
   .masthead-card-badge strong {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
   }
   .masthead-card-badge span {
-    font-size: 0.72rem;
+    font-size: 0.65rem;
   }
 
   /* 3. Highly Accessible Mobile Navigation (Drawer + Swipeable Pills) */

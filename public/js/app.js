@@ -98,11 +98,6 @@ async function handleEnrollmentSubmit(e) {
   }
 
   const submitBtn = document.getElementById('submitEnrollBtn');
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span>⏳</span><span>पंजीकरण दर्ज हो रहा है... (Registering Parcel)</span>';
-  }
-
   const planName = activePlan === 'RESIDENT_2999' ? 'ANNUAL_2999' : 'NRI_120USD';
   const amount = activePlan === 'RESIDENT_2999' ? 2999 : 120;
   const instantRegId = 'ZSK_' + new Date().getFullYear() + '_' + Math.floor(10000 + Math.random() * 90000);
@@ -128,7 +123,6 @@ async function handleEnrollmentSubmit(e) {
   receiptCard.scrollIntoView({ behavior: 'smooth' });
 
   // Reset submit button state
-  const submitBtn = document.getElementById('submitEnrollBtn');
   if (submitBtn) {
     submitBtn.disabled = false;
     setFormPlan(activePlan);
@@ -310,3 +304,11 @@ function showGovAlert(messageHtml, title = 'आवश्यक सूचना (
     };
   }
 }
+
+// Global Window Exports
+window.handleEnrollmentSubmit = handleEnrollmentSubmit;
+window.setFormPlan = setFormPlan;
+window.selectPlanAndScroll = selectPlanAndScroll;
+window.showGovAlert = showGovAlert;
+window.startNewEnrollment = startNewEnrollment;
+window.clearEnrollmentForm = clearEnrollmentForm;

@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/assets/govt_logo.png">
 
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css?v=20260922_07">
   <link rel="icon" type="image/png" href="/assets/govt_logo.png">
 </head>
 <body>
@@ -447,67 +447,160 @@
             </form>
 
             <!-- 10. Official Provisional Acknowledgment Receipt (Appears on submit) -->
+            <!-- 10. Official Provisional Acknowledgment Receipt (Appears on submit) -->
             <div id="officialReceiptCard" class="receipt-wrapper">
-              <div class="receipt-header">
-                <img src="/assets/govt_logo.png" alt="Emblem" style="width:64px; height:64px; margin-bottom:0.5rem;">
-                <h3>ज़मीन सेवा केंद्र — आधिकारिक अनंतिम पंजीकरण पावती</h3>
-                <div style="font-size:0.85rem; color:#b45309; font-weight:700; margin-top:0.25rem;">
-                  ⏳ PROVISIONAL ACKNOWLEDGMENT: अनंतिम पंजीकरण दर्ज — UTR सत्यापन प्रतीक्षित
-                </div>
-              </div>
+              <div class="receipt-inner-frame">
+                
+                <!-- Receipt Top Header with National Emblem -->
+                <div class="receipt-header">
+                  <div class="rcpt-header-top">
+                    <img src="/assets/govt_logo.png" alt="Emblem" class="rcpt-emblem">
+                    <div class="rcpt-titles">
+                      <div class="rcpt-dept-hi">डिजिटल भू-राजस्व सुरक्षा एवं 24/7 निगरानी प्रकोष्ठ</div>
+                      <div class="rcpt-dept-en">DIGITAL LAND RECORD VIGILANCE CELL • REVENUE MONITORING DESK</div>
+                      <h2 class="rcpt-org-title">ज़मीन सेवा केंद्र (ZAMEEN SEVA KENDRA)</h2>
+                      <div class="rcpt-doc-title">आधिकारिक अनंतिम पंजीकरण पावती • PROVISIONAL ENROLLMENT ACKNOWLEDGMENT</div>
+                    </div>
+                  </div>
 
-              <div class="receipt-grid">
-                <div class="receipt-item">
-                  <strong>पंजीकरण संख्या (Registration ID):</strong>
-                  <span id="rcptOrderId" style="color:var(--gov-navy);">ZSK_2026_9941</span>
+                  <!-- Metadata Ribbon -->
+                  <div class="rcpt-meta-ribbon">
+                    <div class="rcpt-meta-item">
+                      <span class="meta-label">पावती संख्या (Receipt ID):</span>
+                      <strong class="meta-val" id="rcptOrderId">ZSK_2026_9941</strong>
+                    </div>
+                    <div class="rcpt-meta-item">
+                      <span class="meta-label">दिनांक व समय (Issued On):</span>
+                      <strong class="meta-val" id="rcptTimestamp">22 Sep 2026, 12:00 PM IST</strong>
+                    </div>
+                    <div class="rcpt-meta-item">
+                      <span class="meta-label">स्थिति (Status):</span>
+                      <span class="rcpt-status-badge">⏳ अनंतिम दर्ज — UTR सत्यापन प्रतीक्षित</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="receipt-item">
-                  <strong>आवेदक / भूस्वामी का नाम:</strong>
-                  <span id="rcptName">दिनेश नाथ</span>
-                </div>
-                <div class="receipt-item">
-                  <strong>खसरा / गाटा संख्या:</strong>
-                  <span id="rcptGata" style="color:var(--gov-crimson);">गाटा #28MI</span>
-                </div>
-                <div class="receipt-item">
-                  <strong>ग्राम व तहसील (Location):</strong>
-                  <span id="rcptLocation">कादराबाद, मोदीनगर (गाजियाबाद)</span>
-                </div>
-                <div class="receipt-item">
-                  <strong>सुरक्षा योजना (Plan):</strong>
-                  <span id="rcptPlan">₹2,999 / वर्ष (वार्षिक सुरक्षा कवच)</span>
-                </div>
-                <div class="receipt-item">
-                  <strong>व्हाट्सएप अलर्ट नंबर:</strong>
-                  <span id="rcptPhone">+91 98765 43210</span>
-                </div>
-                <div class="receipt-item">
-                  <strong>दर्ज UPI UTR / संदर्भ संख्या:</strong>
-                  <span id="rcptUtr" style="color:#b45309; font-weight:700;">423456789012</span>
-                </div>
-                <div class="receipt-item">
-                  <strong>सक्रियता स्थिति (Status):</strong>
-                  <span style="color:#d97706; font-weight:700;">⏳ UTR सत्यापन प्रक्रियाधीन</span>
-                </div>
-              </div>
 
-              <div style="background:#fffbeb; border:1px solid #fde68a; border-left: 5px solid #d97706; border-radius:4px; padding:1.15rem; font-size:0.9rem; color:#92400e; line-height:1.6; margin-bottom:1.5rem;">
-                <strong style="font-size:0.95rem; color:#b45309; display:block; margin-bottom:0.35rem;">
-                  ⏳ सत्यापन प्रक्रियाधीन (Bank Verification in Progress):
-                </strong>
-                आपका भूमि पंजीकरण विवरण सफलतापूर्वक प्राप्त हो गया है। हमारे राजस्व एवं लेखा दल द्वारा आपके दर्ज <strong>UPI UTR No.</strong> के बैंक सत्यापन के उपरांत आपकी <strong>24/7 निगरानी सेवा सक्रिय (Active)</strong> कर दी जाएगी।
-                <div style="margin-top:0.6rem; color:#78350f; font-weight:700; background:#fef3c7; padding:0.6rem 0.85rem; border-radius:4px;">
-                  📲 सत्यापन पूर्ण होते ही अंतिम आधिकारिक मुहरबंद रसीद (Official Stamped Receipt) एवं प्रथम खतौनी विश्लेषण रिपोर्ट आपके व्हाट्सएप नंबर पर भेज दी जाएगी।
-                </div>
-              </div>
+                <!-- Structured Official Receipt Table -->
+                <div class="rcpt-table-wrap">
+                  <table class="rcpt-official-table">
+                    <!-- Section 1 -->
+                    <thead>
+                      <tr class="rcpt-sec-header">
+                        <th colspan="4">1. भूस्वामी / आवेदक का विवरण (Landowner / Applicant Profile)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="r-th">आवेदक का पूरा नाम:</td>
+                        <td class="r-td" id="rcptName">दिनेश नाथ</td>
+                        <td class="r-th">व्हाट्सएप मोबाइल नंबर:</td>
+                        <td class="r-td" id="rcptPhone">+91 98765 43210</td>
+                      </tr>
+                      <tr>
+                        <td class="r-th">ईमेल पता (Email):</td>
+                        <td class="r-td" id="rcptEmail" colspan="3">name@example.com</td>
+                      </tr>
+                    </tbody>
 
-              <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-                <button onclick="window.print();" class="btn-gov-secondary" style="padding:0.6rem 1.2rem;">
-                  🖨️ अनंतिम पावती प्रिंट करें (Print Provisional Receipt)
-                </button>
-                <button onclick="startNewEnrollment();" class="btn-gov-primary" style="padding:0.6rem 1.2rem;">
-                  नया पंजीकरण करें (New Enrollment)
-                </button>
+                    <!-- Section 2 -->
+                    <thead>
+                      <tr class="rcpt-sec-header">
+                        <th colspan="4">2. भूमि पार्सल / राजस्व अभिलेख विवरण (Land Parcel Details)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="r-th">गाटा / खसरा संख्या:</td>
+                        <td class="r-td highlight-crimson" id="rcptGata">गाटा #28MI</td>
+                        <td class="r-th">ग्राम / मौजा (Village):</td>
+                        <td class="r-td" id="rcptVillage">कादराबाद</td>
+                      </tr>
+                      <tr>
+                        <td class="r-th">परगना व तहसील (Tehsil):</td>
+                        <td class="r-td" id="rcptTehsil">मोदीनगर</td>
+                        <td class="r-th">जनपद व राज्य (District & State):</td>
+                        <td class="r-td" id="rcptDistrict">गाजियाबाद (उत्तर प्रदेश)</td>
+                      </tr>
+                    </tbody>
+
+                    <!-- Section 3 -->
+                    <thead>
+                      <tr class="rcpt-sec-header">
+                        <th colspan="4">3. सुरक्षा योजना व बैंक भुगतान संदर्भ (Plan & Payment Details)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="r-th">सुरक्षा योजना (Plan):</td>
+                        <td class="r-td" id="rcptPlan">₹2,999 / वर्ष (वार्षिक सुरक्षा कवच)</td>
+                        <td class="r-th">शुल्क राशि (Amount Paid):</td>
+                        <td class="r-td highlight-green" id="rcptAmount">₹2,999.00</td>
+                      </tr>
+                      <tr>
+                        <td class="r-th">दर्ज UPI UTR / संदर्भ संख्या:</td>
+                        <td class="r-td highlight-utr" id="rcptUtr">423456789012</td>
+                        <td class="r-th">सत्यापन स्थिति (Status):</td>
+                        <td class="r-td" style="color:#b45309; font-weight:700;">⏳ UTR सत्यापन प्रक्रियाधीन</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Statutory Notice & Legal Assurance -->
+                <div class="rcpt-notice-box">
+                  <div class="rcpt-notice-title">⚖️ वैधानिक सूचना एवं सेवा सक्रियण नियम (Statutory Notice):</div>
+                  <p>
+                    यह एक कम्प्यूटरीकृत अनंतिम पंजीकरण पावती (Provisional Acknowledgment) है। दर्ज <strong>12-अंकों के UPI UTR No.</strong> के बैंक खाते में सफल सत्यापन के उपरांत आपकी <strong>24/7 खतौनी एवं दाखिल-खारिज निगरानी प्रणाली</strong> सक्रिय (Active) कर दी जाएगी।
+                  </p>
+                  <div class="rcpt-notice-sub">
+                    📲 सत्यापन पूर्ण होते ही मुहरबंद अंतिम आधिकारिक रसीद एवं प्रथम खतौनी विश्लेषण रिपोर्ट आपके व्हाट्सएप नंबर (<span id="rcptPhoneNotice">+91 98765 43210</span>) पर प्रेषित की जाएगी।
+                  </div>
+                </div>
+
+                <!-- Official Stamp & Signature Block -->
+                <div class="rcpt-auth-block">
+                  <div class="rcpt-qr-col">
+                    <img src="/assets/qr_code_clean.png?v=3" alt="Verification QR" class="rcpt-qr-img">
+                    <div class="rcpt-qr-caption">
+                      <span>डिजिटल सत्यापन टोकन</span>
+                      <strong>VERIFIED SENTINEL</strong>
+                    </div>
+                  </div>
+
+                  <div class="rcpt-seal-col">
+                    <div class="rcpt-rubber-stamp">
+                      <div class="stamp-outer-circle">
+                        <div class="stamp-inner-circle">
+                          <div class="stamp-text-top">ज़मीन सेवा केंद्र</div>
+                          <div class="stamp-text-center">
+                            <span>★ अनंतिम स्वीकृत ★</span>
+                            <strong>PROVISIONALLY VERIFIED</strong>
+                            <small>UP REVENUE SENTINEL</small>
+                          </div>
+                          <div class="stamp-text-bottom">राजस्व निगरानी प्रकोष्ठ</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="rcpt-sig-col">
+                    <div class="rcpt-sig-line"></div>
+                    <div class="rcpt-sig-name">अधिकृत डिजिटल हस्ताक्षरकर्ता</div>
+                    <div class="rcpt-sig-role">Authorized Registrar & Sentinel Officer</div>
+                    <div class="rcpt-sig-sub">राजस्व अभिलेख एवं नागरिक सहायता डेस्क, ज़मीन सेवा केंद्र</div>
+                  </div>
+                </div>
+
+                <!-- Action Buttons (Hidden on Print) -->
+                <div class="rcpt-actions no-print">
+                  <button type="button" onclick="window.print();" class="btn-gov-secondary" style="padding:0.75rem 1.5rem; font-weight:700; font-size:0.95rem; cursor:pointer;">
+                    🖨️ अनंतिम पावती प्रिंट करें (Print Provisional Receipt)
+                  </button>
+                  <button type="button" onclick="startNewEnrollment();" class="btn-gov-primary" style="padding:0.75rem 1.5rem; font-weight:700; font-size:0.95rem; cursor:pointer;">
+                    नया पंजीकरण करें (New Enrollment)
+                  </button>
+                </div>
+
               </div>
             </div>
 
@@ -703,7 +796,7 @@
   </div>
 
   <!-- Clean, Lightweight Client Logic with Cache-Busting -->
-  <script src="/js/app.js?v=20260922_06"></script>
+  <script src="/js/app.js?v=20260922_07"></script>
   <script>
     // Ensure startNewEnrollment is directly available on window
     if (!window.startNewEnrollment) {

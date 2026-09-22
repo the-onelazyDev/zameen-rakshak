@@ -103,18 +103,37 @@ async function handleEnrollmentSubmit(e) {
   const instantRegId = 'ZSK_' + new Date().getFullYear() + '_' + Math.floor(10000 + Math.random() * 90000);
 
   // 1. INSTANT UI SUCCESS FEEDBACK (0 Milliseconds - Never keep citizen waiting!)
-  document.getElementById('rcptOrderId').textContent = instantRegId;
-  document.getElementById('rcptName').textContent = applicantName;
-  document.getElementById('rcptGata').textContent = `गाटा #${landKhasra}`;
-  document.getElementById('rcptLocation').textContent = `${landVillage}, ${landTehsil} (${landDistrict})`;
-  document.getElementById('rcptPlan').textContent = activePlan === 'RESIDENT_2999' 
+  const nowStr = new Date().toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
+  });
+
+  const setRcpt = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val || 'N/A';
+  };
+
+  setRcpt('rcptOrderId', instantRegId);
+  setRcpt('rcptTimestamp', nowStr);
+  setRcpt('rcptName', applicantName);
+  setRcpt('rcptPhone', applicantPhone);
+  setRcpt('rcptPhoneNotice', applicantPhone);
+  setRcpt('rcptEmail', applicantEmail || 'N/A');
+  setRcpt('rcptGata', `गाटा #${landKhasra}`);
+  setRcpt('rcptVillage', landVillage);
+  setRcpt('rcptTehsil', landTehsil);
+  setRcpt('rcptDistrict', `${landDistrict} (उत्तर प्रदेश)`);
+  setRcpt('rcptLocation', `${landVillage}, ${landTehsil} (${landDistrict})`);
+  setRcpt('rcptPlan', activePlan === 'RESIDENT_2999' 
     ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
-    : '$120 / Year (NRI Overseas Land Guard)';
-  document.getElementById('rcptPhone').textContent = applicantPhone;
-  const rcptUtr = document.getElementById('rcptUtr');
-  if (rcptUtr) {
-    rcptUtr.textContent = utr || (activePlan === 'RESIDENT_2999' ? 'Pending Bank Verification' : 'NRI Overseas Verification');
-  }
+    : '$120 / Year (NRI Overseas Land Guard)');
+  setRcpt('rcptAmount', activePlan === 'RESIDENT_2999' ? '₹2,999.00' : '$120.00');
+  setRcpt('rcptUtr', utr || (activePlan === 'RESIDENT_2999' ? 'Pending Bank Verification' : 'NRI Overseas Verification'));
 
   // Switch display immediately
   document.getElementById('enrollmentForm').style.display = 'none';

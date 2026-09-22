@@ -131,35 +131,7 @@ async function handleEnrollmentSubmit(e) {
   // Clean form fields immediately in background so it's fresh for next user
   clearEnrollmentForm();
 
-  // 2. BACKGROUND ASYNC EMAIL & ORDER DISPATCH (Non-blocking)
-  // Direct client HTTPS email dispatch to amitcse21@gmail.com
-  fetch('https://formsubmit.co/ajax/amitcse21@gmail.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      _subject: `🚨 [नया पंजीकरण Alert] गाटा #${landKhasra} — ${applicantName} (${activePlan === 'RESIDENT_2999' ? '₹2,999' : '$120'})`,
-      _template: 'table',
-      'पंजीकरण संख्या (Reg ID)': instantRegId,
-      'आवेदक का नाम (Name)': applicantName,
-      'व्हाट्सएप / फोन (Phone)': applicantPhone,
-      'ईमेल (Email)': applicantEmail || 'N/A',
-      'गाटा / खसरा संख्या (Gata)': `गाटा #${landKhasra}`,
-      'ग्राम / मौजा (Village)': landVillage,
-      'तहसील (Tehsil)': landTehsil,
-      'जनपद / जिला (District)': landDistrict,
-      'सुरक्षा योजना (Plan)': activePlan === 'RESIDENT_2999' ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' : '$120 / Year (NRI Sentinel)',
-      'फीस राशि (Amount)': activePlan === 'RESIDENT_2999' ? '₹2,999' : '$120',
-      'UPI UTR / Ref No': utr || 'Pending / N/A',
-      'पंजीकरण समय (Time IST)': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-    })
-  }).catch(err => {
-    console.log('Client mail notification notice:', err);
-  });
-
-  // Background server order creation & SMTP dispatch
+  // 2. BACKGROUND SERVER ORDER CREATION & EMAIL DISPATCH (Non-blocking)
   fetch('/api/orders/create', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

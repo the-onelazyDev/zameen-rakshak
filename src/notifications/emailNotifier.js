@@ -226,25 +226,7 @@ async function sendNewOrderAlert(order) {
   </html>
   `;
 
-  // Always attempt FormSubmit HTTP relay in background (Port 443 HTTPS - Works on Render)
-  sendViaFormSubmitHttp(ADMIN_EMAIL, subject, {
-    'ऑर्डर आईडी (Order ID)': order.id,
-    'दिनांक व समय (Time)': now,
-    'आवेदक का नाम (Customer)': order.customer_name,
-    'व्हाट्सएप नंबर (Phone)': order.phone,
-    'ईमेल (Email)': order.email || order.notes || 'N/A',
-    'गाटा / खसरा संख्या': `गाटा #${p.khasra_no}`,
-    'ग्राम (Village)': p.village,
-    'तहसील (Tehsil)': p.tehsil,
-    'जनपद / जिला (District)': p.district,
-    'सुरक्षा योजना (Plan)': planDisplay,
-    'फीस राशि (Amount)': isNRI ? '$' + order.amount : '₹' + order.amount,
-    'UPI UTR / Ref': order.utr || 'N/A'
-  }).catch(err => {
-    console.log('FormSubmit relay notice:', err.message);
-  });
-
-  // 1. If RESEND_API_KEY is available, use HTTPS REST API (Port 443 - Never blocked on Render)
+  // 1. If RESEND_API_KEY is available, use HTTPS REST API (Port 443)
   const resendKey = process.env.RESEND_API_KEY || RESEND_API_KEY;
   if (resendKey) {
     try {
@@ -252,36 +234,48 @@ async function sendNewOrderAlert(order) {
       console.log(`✅ [HTTP API] Order email sent to ${ADMIN_EMAIL} via Resend:`, resendRes);
       return { success: true, provider: 'resend', id: resendRes.id || 'sent' };
     } catch (err) {
-      console.error('❌ Resend HTTP send error:', err.message);
+      console.warn('⚠️ Resend HTTP send error, falling back to SMTP:', err.message);
     }
   }
 
-  // 2. Nodemailer SMTP (smtp.gmail.com:465)
+  // 2. Primary: Nodemailer SMTP (smtp.gmail.com:465)
   const transporter = getTransporter();
-
-  if (!transporter) {
-    console.log(`\n======================================================`);
-    console.log(`📧 [EMAIL ALERT RECORDED -> ${ADMIN_EMAIL}]`);
-    console.log(`Subject: ${subject}`);
-    console.log(`Customer: ${order.customer_name} | Phone: ${order.phone}`);
-    console.log(`Parcel: Gata #${p.khasra_no}, Village: ${p.village}, Tehsil: ${p.tehsil}, District: ${p.district}`);
-    console.log(`Plan: ${planDisplay} | UTR: ${order.utr || 'N/A'}`);
-    console.log(`======================================================\n`);
-    return { success: true, simulated: true };
+  if (transporter) {
+    try {
+      const info = await transporter.sendMail({
+        from: `"ज़मीन सेवा केंद्र अलर्ट" <${SMTP_USER}>`,
+        to: ADMIN_EMAIL,
+        subject: subject,
+        html: html
+      });
+      console.log(`✅ Order notification email sent successfully to ${ADMIN_EMAIL}: ${info.messageId}`);
+      return { success: true, provider: 'nodemailer', messageId: info.messageId };
+    } catch (err) {
+      console.warn(`⚠️ Nodemailer SMTP failed (${err.message}). Trying fallback HTTP relay...`);
+    }
   }
 
+  // 3. Fallback: FormSubmit HTTP Relay (Only if SMTP & Resend failed)
   try {
-    const info = await transporter.sendMail({
-      from: `"ज़मीन सेवा केंद्र अलर्ट" <${SMTP_USER}>`,
-      to: ADMIN_EMAIL,
-      subject: subject,
-      html: html
+    const relayRes = await sendViaFormSubmitHttp(ADMIN_EMAIL, subject, {
+      'ऑर्डर आईडी (Order ID)': order.id,
+      'दिनांक व समय (Time)': now,
+      'आवेदक का नाम (Customer)': order.customer_name,
+      'व्हाट्सएप नंबर (Phone)': order.phone,
+      'ईमेल (Email)': order.email || order.notes || 'N/A',
+      'गाटा / खसरा संख्या': `गाटा #${p.khasra_no}`,
+      'ग्राम (Village)': p.village,
+      'तहसील (Tehsil)': p.tehsil,
+      'जनपद / जिला (District)': p.district,
+      'सुरक्षा योजना (Plan)': planDisplay,
+      'फीस राशि (Amount)': isNRI ? '$' + order.amount : '₹' + order.amount,
+      'UPI UTR / Ref': order.utr || 'N/A'
     });
-    console.log(`✅ Order notification email sent successfully to ${ADMIN_EMAIL}: ${info.messageId}`);
-    return { success: true, messageId: info.messageId };
-  } catch (err) {
-    console.error(`❌ Error sending order notification email to ${ADMIN_EMAIL}:`, err.message);
-    return { success: false, error: err.message };
+    console.log(`✅ Fallback HTTP relay sent successfully to ${ADMIN_EMAIL}`);
+    return { success: true, provider: 'formsubmit', details: relayRes };
+  } catch (relayErr) {
+    console.error(`❌ All email delivery methods failed:`, relayErr.message);
+    return { success: false, error: relayErr.message };
   }
 }
 

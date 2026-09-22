@@ -48,6 +48,31 @@ app.post('/api/orders/create', (req, res) => {
   }
 });
 
+// Diagnostic test endpoint to test live email delivery
+app.get('/api/test-email', async (req, res) => {
+  try {
+    const testOrder = {
+      id: 'TEST_' + Date.now().toString(36).toUpperCase(),
+      customer_name: 'Test Live Diagnostic',
+      phone: '+917417174025',
+      email: 'amitcse21@gmail.com',
+      parcel: {
+        district: 'Ghaziabad',
+        tehsil: 'Modinagar',
+        village: 'Kadrabad',
+        khasra_no: '28MI'
+      },
+      plan: 'ANNUAL_2999',
+      amount: 2999,
+      utr: 'TEST_UTR_LIVE'
+    };
+    const result = await sendNewOrderAlert(testOrder);
+    res.json({ success: true, result });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message, stack: err.stack });
+  }
+});
+
 app.get('/api/orders/list', (req, res) => {
   try {
     const orders = orderStore.getAllOrders();

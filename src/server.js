@@ -33,6 +33,17 @@ app.get('/', (req, res) => {
   }
 });
 
+// Explicit Sitemaps and Robots endpoints with strict XML & text headers
+app.get(['/sitemap.xml', '//sitemap.xml'], (req, res) => {
+  res.header('Content-Type', 'application/xml; charset=utf-8');
+  res.sendFile(path.join(__dirname, '../public/sitemap.xml'));
+});
+
+app.get(['/robots.txt', '//robots.txt'], (req, res) => {
+  res.header('Content-Type', 'text/plain; charset=utf-8');
+  res.sendFile(path.join(__dirname, '../public/robots.txt'));
+});
+
 // Serve Static Assets from public directory
 app.use(express.static(path.join(__dirname, '../public')));
 

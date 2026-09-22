@@ -1366,9 +1366,14 @@ body {
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: var(--shadow-sm);
   margin-top: 1.5rem;
+}
+
+.rule35-mobile-cards {
+  display: none;
 }
 
 .rule35-table {
@@ -1986,19 +1991,84 @@ body {
     min-height: 48px;
   }
 
-  /* 11. Section 35 Table Responsiveness */
-  .rule35-table-card {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: var(--radius-sm);
+  /* 11. Section 35 Mobile Experience — High-Legibility Comparison Cards */
+  .rule35-table-wrap {
+    display: none !important;
   }
-  .rule35-table {
-    min-width: 600px;
-    font-size: 0.85rem;
+
+  .rule35-mobile-cards {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.25rem;
   }
-  .rule35-table th, 
-  .rule35-table td {
+
+  .rule35-card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .rule35-card-header {
+    background: var(--gov-navy);
+    color: #ffffff;
+    padding: 0.7rem 1rem;
+    border-bottom: 3px solid var(--gov-saffron);
+  }
+
+  .phase-badge {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+  }
+
+  .rule35-card-body {
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .rule35-box {
+    border-radius: 8px;
     padding: 0.75rem 0.85rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .box-trap {
+    background: #fef2f2;
+    border: 1.5px solid #fca5a5;
+    color: #7f1d1d;
+  }
+
+  .box-sentinel {
+    background: #f0fdf4;
+    border: 1.5px solid #86efac;
+    color: #14532d;
+  }
+
+  .box-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.02em;
+  }
+
+  .danger-label {
+    color: #b91c1c;
+  }
+
+  .safe-label {
+    color: #15803d;
+  }
+
+  .rule35-box p {
+    margin: 0;
+    font-size: 0.86rem;
   }
 
   /* 12. FAQ */

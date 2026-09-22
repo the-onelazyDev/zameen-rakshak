@@ -24,12 +24,12 @@ app.use('/petitions', express.static(path.join(__dirname, '../data/petitions')))
 // --- ORDERS API (For Concierge Model) ---
 app.post('/api/orders/create', (req, res) => {
   try {
-    const { customerName, phone, email, district, tehsil, village, khasraNo, plan, amount, utr, notes } = req.body;
+    const { customerName, phone, email, state, district, tehsil, village, khasraNo, plan, amount, utr, notes } = req.body;
     if (!phone || !khasraNo) {
       return res.status(400).json({ success: false, error: 'Phone and Khasra No are required' });
     }
     const order = orderStore.createOrder({
-      customerName, phone, email, district, tehsil, village, khasraNo, plan, amount, utr, notes: notes || email
+      customerName, phone, email, state: state || 'Uttar Pradesh', district, tehsil, village, khasraNo, plan, amount, utr, notes: notes || email
     });
 
     // Send instant email notification to amitcse21@gmail.com

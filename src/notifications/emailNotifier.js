@@ -200,6 +200,10 @@ async function sendNewOrderAlert(order) {
             <td class="val">${p.district || 'N/A'}</td>
           </tr>
           <tr>
+            <td class="label">राज्य (State)</td>
+            <td class="val" style="color: #0b3b60; font-weight: bold;">${p.state || 'उत्तर प्रदेश (Uttar Pradesh)'}</td>
+          </tr>
+          <tr>
             <td class="label">चुनी गई योजना (Plan)</td>
             <td class="val">${planDisplay}</td>
           </tr>

@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/assets/govt_logo.png">
 
-  <link rel="stylesheet" href="/css/style.css?v=20260922_09">
+  <link rel="stylesheet" href="/css/style.css?v=20260922_10">
   <link rel="icon" type="image/png" href="/assets/govt_logo.png">
 </head>
 <body>
@@ -24,8 +24,8 @@
   <aside class="top-utility-bar" aria-label="Citizen Utility Bar">
     <div class="container top-utility-wrap">
       <div class="utility-left">
-        <span class="gov-badge">🇮🇳 डिजिटल भूलेख निगरानी प्रकोष्ठ | Digital Land Records Cell</span>
-        <span>नागरिक भूमि अभिलेख एवं दाखिल-खारिज सतर्कता प्रणाली</span>
+        <span class="gov-badge">🇮🇳 राष्ट्रीय डिजिटल भूलेख निगरानी प्रकोष्ठ | All-India Land Records Sentinel Cell</span>
+        <span>समस्त भारतीय राज्यों हेतु नागरिक भूमि अभिलेख एवं दाखिल-खारिज सतर्कता प्रणाली</span>
       </div>
       <div class="utility-right">
         <span id="liveDateTime">सोमवार, 21 सितम्बर 2026</span>
@@ -50,18 +50,18 @@
         <div class="masthead-text">
           <h1>ज़मीन सेवा केंद्र</h1>
           <div class="masthead-sub-en">ZAMEEN SEVA KENDRA</div>
-          <div class="masthead-desc">नागरिक भूमि अभिलेख सत्यापन एवं 24/7 दाखिल-खारिज निगरानी प्रणाली</div>
+          <div class="masthead-desc">नागरिक भूमि अभिलेख सत्यापन एवं 24/7 दाखिल-खारिज निगरानी प्रणाली (समस्त भारत / All States)</div>
         </div>
       </a>
 
       <div class="masthead-badges">
         <div class="masthead-card-badge">
-          <strong>उ.प्र. राजस्व संहिता 2006</strong>
-          <span>धारा 35 विहित आपत्ति निगरानी</span>
+          <strong>अखिल भारतीय राजस्व निगरानी</strong>
+          <span>30-दिवसीय आपत्ति सतर्कता (All States)</span>
         </div>
         <div class="masthead-card-badge" style="background: var(--gov-green-light); border-color:#bbf7d0;">
           <strong style="color: var(--gov-green-dark);">100% सार्वजनिक रिकॉर्ड्स</strong>
-          <span>UP Bhulekh / DILRMP पर आधारित</span>
+          <span>DILRMP / समस्त राज्य भूलेख पोर्टल्स</span>
         </div>
       </div>
     </div>
@@ -430,37 +430,59 @@
                 </div>
               </fieldset>
 
-              <!-- Step 3: Land Record Details -->
+              <!-- Step 3: Land Record Details (All States Supported) -->
               <fieldset class="form-fieldset">
-                <legend class="form-legend">3. भूमि अभिलेख विवरण (Land Parcel Details)</legend>
+                <legend class="form-legend">3. भूमि अभिलेख विवरण (Land Parcel Details — All Indian States)</legend>
                 
                 <div class="form-row-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="landState">
+                      राज्य (State) <span class="req">*</span>
+                    </label>
+                    <select id="landState" class="form-input-gov" required style="cursor:pointer; font-weight:600;">
+                      <option value="उत्तर प्रदेश (Uttar Pradesh)" selected>उत्तर प्रदेश (Uttar Pradesh)</option>
+                      <option value="बिहार (Bihar)">बिहार (Bihar)</option>
+                      <option value="मध्य प्रदेश (Madhya Pradesh)">मध्य प्रदेश (Madhya Pradesh)</option>
+                      <option value="राजस्थान (Rajasthan)">राजस्थान (Rajasthan)</option>
+                      <option value="हरियाणा (Haryana)">हरियाणा (Haryana)</option>
+                      <option value="महाराष्ट्र (Maharashtra)">महाराष्ट्र (Maharashtra)</option>
+                      <option value="उत्तराखंड (Uttarakhand)">उत्तराखंड (Uttarakhand)</option>
+                      <option value="पंजाब (Punjab)">पंजाब (Punjab)</option>
+                      <option value="गुजरात (Gujarat)">गुजरात (Gujarat)</option>
+                      <option value="दिल्ली (Delhi NCR)">दिल्ली (Delhi NCR)</option>
+                      <option value="झारखंड (Jharkhand)">झारखंड (Jharkhand)</option>
+                      <option value="छत्तीसगढ़ (Chhattisgarh)">छत्तीसगढ़ (Chhattisgarh)</option>
+                      <option value="पश्चिम बंगाल (West Bengal)">पश्चिम बंगाल (West Bengal)</option>
+                      <option value="अन्य भारतीय राज्य (Other Indian State)">अन्य भारतीय राज्य (Other Indian State)</option>
+                    </select>
+                  </div>
+
                   <div class="form-group">
                     <label class="form-label" for="landDistrict">
                       जनपद / जिला (District) <span class="req">*</span>
                     </label>
-                    <input type="text" id="landDistrict" class="form-input-gov" placeholder="उदा. गाजियाबाद / गोरखपुर / लखनऊ" required>
+                    <input type="text" id="landDistrict" class="form-input-gov" placeholder="उदा. गाजियाबाद / पटना / इंदौर / जयपुर" required>
                   </div>
 
                   <div class="form-group">
                     <label class="form-label" for="landTehsil">
-                      तहसील (Tehsil) <span class="req">*</span>
+                      तहसील / अंचल (Tehsil / Anchal) <span class="req">*</span>
                     </label>
-                    <input type="text" id="landTehsil" class="form-input-gov" placeholder="उदा. मोदीनगर / चौरी चौरा / सदर" required>
+                    <input type="text" id="landTehsil" class="form-input-gov" placeholder="उदा. मोदीनगर / दानापुर / सांवेर / सांगानेर" required>
                   </div>
 
                   <div class="form-group">
                     <label class="form-label" for="landVillage">
-                      ग्राम / मौजा (Village) <span class="req">*</span>
+                      ग्राम / मौजा (Village / Mauza) <span class="req">*</span>
                     </label>
-                    <input type="text" id="landVillage" class="form-input-gov" placeholder="उदा. कादराबाद / रामपुर" required>
+                    <input type="text" id="landVillage" class="form-input-gov" placeholder="उदा. कादराबाद / रामपुर / फतेहपुर" required>
                   </div>
 
                   <div class="form-group">
                     <label class="form-label" for="landKhasra">
-                      गाटा / खसरा संख्या (Gata / Khasra No.) <span class="req">*</span>
+                      गाटा / खसरा / प्लॉट संख्या (Gata / Khasra No.) <span class="req">*</span>
                     </label>
-                    <input type="text" id="landKhasra" class="form-input-gov" placeholder="उदा. 28MI या 241" required>
+                    <input type="text" id="landKhasra" class="form-input-gov" placeholder="उदा. 28MI या 241/2" required>
                   </div>
                 </div>
               </fieldset>
@@ -656,7 +678,7 @@
                           <div class="stamp-text-center">
                             <span>★ अनंतिम स्वीकृत ★</span>
                             <strong>PROVISIONALLY VERIFIED</strong>
-                            <small>UP REVENUE SENTINEL</small>
+                            <small>ALL INDIA SENTINEL</small>
                           </div>
                           <div class="stamp-text-bottom">राजस्व निगरानी प्रकोष्ठ</div>
                         </div>
@@ -691,18 +713,19 @@
       </div>
     </section>
 
-    <!-- 11. Section 35 Government Trap Breakdown Table -->
+    <!-- 11. Section 35 Government Trap Breakdown Table (All States Supported) -->
     <section class="gov-section35-block" id="rule35Section">
       <div class="container">
         
         <div class="section-title-wrap">
-          <span class="section-badge">कानूनी प्रक्रिया विश्लेषण • Legal Procedure Analysis</span>
+          <span class="section-badge">कानूनी प्रक्रिया विश्लेषण • All-India Land Revenue Analysis</span>
           <h2 class="section-main-title">30-दिवसीय दाखिल-खारिज नियम (धारा 35) की वास्तविकता</h2>
           <p class="section-desc">
-            जानिए क्यों गांव से बाहर रहने वाले प्रवासी भूस्वामी व नौकरीपेशा लोग चुपचाप अपनी जमीन गंवा बैठते हैं।
+            जानिए क्यों गांव से बाहर रहने वाले प्रवासी भूस्वामी व नौकरीपेशा लोग चुपचाप अपनी जमीन गंवा बैठते हैं (उत्तर प्रदेश, बिहार, म.प्र., राजस्थान सहित समस्त भारतीय राज्यों हेतु)।
           </p>
         </div>
 
+        <!-- Desktop & Tablet Table View -->
         <div class="rule35-table-wrap">
           <table class="rule35-table">
             <thead>
@@ -735,6 +758,79 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- Mobile-Optimized Comparison Cards (100% Visible & Legible on Mobile Phones) -->
+        <div class="rule35-mobile-cards">
+          
+          <!-- Card 1: Day 1 -->
+          <div class="rule35-card">
+            <div class="rule35-card-header">
+              <span class="phase-badge">⏱️ चरण 1: दिन 1 (Day 1)</span>
+            </div>
+            <div class="rule35-card-body">
+              <div class="rule35-box box-trap">
+                <div class="box-label danger-label">❌ सामान्य स्थिति (बिना निगरानी के - The Trap):</div>
+                <p>भू-माफिया या फर्जी रिश्तेदार तहसील में फर्जी वसीयत या जाली बैनामा से दाखिल-खारिज का आवेदन डालता है।</p>
+              </div>
+              <div class="rule35-box box-sentinel">
+                <div class="box-label safe-label">✅ ज़मीन सेवा केंद्र सुरक्षा के साथ (With Sentinel):</div>
+                <p>आवेदन दर्ज होते ही ज़मीन सेवा केंद्र का रिकॉर्ड ट्रैकर रात 2:00 बजे इसे पहले ही दिन पकड़ लेता है।</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Day 2 to 10 -->
+          <div class="rule35-card">
+            <div class="rule35-card-header">
+              <span class="phase-badge">📢 चरण 2: दिन 2 से 10 (Days 2 to 10)</span>
+            </div>
+            <div class="rule35-card-body">
+              <div class="rule35-box box-trap">
+                <div class="box-label danger-label">❌ सामान्य स्थिति (बिना निगरानी के - The Trap):</div>
+                <p>तहसील केवल अपने स्थानीय नोटिस बोर्ड पर 30 दिन का नोटिस चस्पा करती है। आपको कोई पत्र या फोन नहीं आता।</p>
+              </div>
+              <div class="rule35-box box-sentinel">
+                <div class="box-label safe-label">✅ ज़मीन सेवा केंद्र सुरक्षा के साथ (With Sentinel):</div>
+                <p>आपके व्हाट्सएप व ईमेल पर क्रिटिकल रेड अलर्ट आता है और साथ में कानूनी स्थगन याचिका (Stay Petition PDF) मिलती है।</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Day 31 -->
+          <div class="rule35-card">
+            <div class="rule35-card-header">
+              <span class="phase-badge">⚖️ चरण 3: दिन 31 (Day 31 — The Trap Closes)</span>
+            </div>
+            <div class="rule35-card-body">
+              <div class="rule35-box box-trap">
+                <div class="box-label danger-label">❌ सामान्य स्थिति (बिना निगरानी के - The Trap):</div>
+                <p><strong>30-दिन की विहित सीमा समाप्त।</strong> कोई आपत्ति न मिलने पर तहसीलदार द्वारा एकपक्षीय आदेश पारित। खतौनी में नाम बदल गया।</p>
+              </div>
+              <div class="rule35-box box-sentinel">
+                <div class="box-label safe-label">✅ ज़मीन सेवा केंद्र सुरक्षा के साथ (With Sentinel):</div>
+                <p>आप या आपके वकील द्वारा 48 घंटे में दाखिल की गई आपत्ति के कारण तहसीलदार द्वारा फर्जीवाड़ा तुरंत निरस्त (Dismissed)।</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Year 2 to 20 -->
+          <div class="rule35-card">
+            <div class="rule35-card-header">
+              <span class="phase-badge">🏛️ चरण 4: वर्ष 2 से 20 (Long-Term Outcome)</span>
+            </div>
+            <div class="rule35-card-body">
+              <div class="rule35-box box-trap">
+                <div class="box-label danger-label">❌ सामान्य स्थिति (बिना निगरानी के - The Trap):</div>
+                <p>आपको सालों बाद पता चलता है। फिर दीवानी अदालत (Civil Court) में 15–20 साल और ₹5–10 लाख खर्च करके मुकदमा लड़ना पड़ता है।</p>
+              </div>
+              <div class="rule35-box box-sentinel">
+                <div class="box-label safe-label">✅ ज़मीन सेवा केंद्र सुरक्षा के साथ (With Sentinel):</div>
+                <p><strong>शून्य कानूनी झंझट।</strong> आपकी पैतृक विरासत 100% सुरक्षित और खतौनी में आपका नाम निर्विवाद बरकरार।</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -790,6 +886,16 @@
             </div>
           </div>
 
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>प्र. 5: क्या ज़मीन सेवा केंद्र केवल उत्तर प्रदेश के लिए है या भारत के सभी राज्यों के लिए?</span>
+              <span>▾</span>
+            </div>
+            <div class="faq-answer">
+              ज़मीन सेवा केंद्र अब <strong>उत्तर प्रदेश, बिहार, मध्य प्रदेश, राजस्थान, हरियाणा, उत्तराखंड, महाराष्ट्र, पंजाब, गुजरात, दिल्ली, झारखंड, छत्तीसगढ़ सहित भारत के सभी राज्यों व केंद्र शासित प्रदेशों</strong> के भूस्वामियों के लिए पूरी तरह उपलब्ध है। भारत सरकार के Digital India Land Records Modernization Programme (DILRMP) और सभी राज्यों के ऑनलाइन भूलेख पोर्टल्स (UP Bhulekh, Bihar Bhumi, MP Bhulekh, Apna Khata Rajasthan आदि) के माध्यम से देश के किसी भी राज्य की पैतृक भूमि की 24/7 निगरानी की जाती है।
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -800,7 +906,7 @@
         <strong style="color: var(--gov-navy-dark); font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
           <span>ℹ️</span> नागरिक पारदर्शिता एवं विधिक घोषणा (Citizen Transparency & Statutory Declaration):
         </strong>
-        ज़मीन सेवा केंद्र (Zameen Seva Kendra) एक स्वतंत्र निजी नागरिक सहायता, राजस्व रिकॉर्ड विश्लेषण व पैतृक भूमि सतर्कता मंच है। यह किसी प्रत्यक्ष सरकारी विभाग का आधिकारिक पोर्टल नहीं है और न ही सरकारी राजस्व न्यायालयों का विकल्प है। हमारा मंच राज्य सरकारों द्वारा सार्वजनिक रूप से उपलब्ध कराए जाने वाले डिजिटल भूलेख (DILRMP / UP Bhulekh / RCCMS) रिकॉर्ड्स की दैनिक निगरानी, अनधिकृत आवेदनों पर समयबद्ध चेतावनी तथा उ.प्र. राजस्व संहिता 2006 (धारा 35) के अंतर्गत विधिक आपत्ति प्रार्थना पत्र का प्रारूप उपलब्ध कराने की निजी पेशेवर परामर्श सेवा प्रदान करता है।
+        ज़मीन सेवा केंद्र (Zameen Seva Kendra) एक स्वतंत्र निजी नागरिक सहायता, राजस्व रिकॉर्ड विश्लेषण व पैतृक भूमि सतर्कता मंच है। यह किसी प्रत्यक्ष सरकारी विभाग का आधिकारिक पोर्टल नहीं है और न ही सरकारी राजस्व न्यायालयों का विकल्प है। हमारा मंच राज्य सरकारों द्वारा सार्वजनिक रूप से उपलब्ध कराए जाने वाले डिजिटल भूलेख (DILRMP / UP Bhulekh / Bihar Bhumi / MP Bhulekh / RCCMS) रिकॉर्ड्स की दैनिक निगरानी, अनधिकृत आवेदनों पर समयबद्ध चेतावनी तथा राजस्व कानूनों (धारा 35 आदि) के अंतर्गत विधिक आपत्ति प्रार्थना पत्र का प्रारूप उपलब्ध कराने की निजी पेशेवर परामर्श सेवा प्रदान करता है।
       </div>
     </section>
 
@@ -814,7 +920,7 @@
         <div class="footer-col">
           <h4>🏛️ ज़मीन सेवा केंद्र</h4>
           <p style="line-height:1.6; margin-top:0.5rem; font-size:0.85rem;">
-            नागरिक भूमि अभिलेख सत्यापन एवं 24/7 दाखिल-खारिज निगरानी प्रणाली। हमारा उद्देश्य भारत व विदेश में रह रहे नागरिकों को उनकी पैतृक भूमि के राजस्व अभिलेखों की सुरक्षा व पारदर्शी जानकारी प्रदान करना है।
+            नागरिक भूमि अभिलेख सत्यापन एवं 24/7 दाखिल-खारिज निगरानी प्रणाली (अखिल भारतीय कवरेज)। हमारा उद्देश्य भारत व विदेश में रह रहे नागरिकों को उनकी पैतृक भूमि के राजस्व अभिलेखों की सुरक्षा व पारदर्शी जानकारी प्रदान करना है।
           </p>
           <div style="margin-top:1rem; font-size:0.82rem; color:#94a3b8;">
             📞 नागरिक हेल्पलाइन: WhatsApp सहायता 24/7 उपलब्ध<br>
@@ -825,10 +931,12 @@
         <div class="footer-col">
           <h4>महत्वपूर्ण सरकारी पोर्टल लिंक्स</h4>
           <ul class="footer-links-list">
+            <li><a href="https://dilrmp.gov.in" target="_blank">🌐 राष्ट्रीय डिजिटल इंडिया भूलेख (DILRMP)</a></li>
             <li><a href="https://upbhulekh.gov.in" target="_blank">🏛️ उत्तर प्रदेश भूलेख (UP Bhulekh)</a></li>
-            <li><a href="http://bor.up.nic.in" target="_blank">📜 राजस्व परिषद उत्तर प्रदेश</a></li>
-            <li><a href="https://dilrmp.gov.in" target="_blank">🌐 राष्ट्रीय भूमि अभिलेख आधुनिकीकरण (DILRMP)</a></li>
-            <li><a href="https://biharbhumi.bihar.gov.in" target="_blank">🌾 बिहार भूमि राजस्व पोर्टल</a></li>
+            <li><a href="https://biharbhumi.bihar.gov.in" target="_blank">🌾 बिहार भूमि राजस्व पोर्टल (Bihar Bhumi)</a></li>
+            <li><a href="https://mpbhulekh.gov.in" target="_blank">🏞️ मध्य प्रदेश भूलेख (MP Bhulekh)</a></li>
+            <li><a href="https://apnakhata.rajasthan.gov.in" target="_blank">🏜️ अपना खाता राजस्थान (Apna Khata)</a></li>
+            <li><a href="https://jamabandi.nic.in" target="_blank">📜 हरियाणा जमाबंदी (Haryana Jamabandi)</a></li>
             <li><a href="https://digitalindia.gov.in" target="_blank">🇮🇳 डिजिटल इंडिया (Digital India)</a></li>
           </ul>
         </div>
@@ -876,7 +984,7 @@
     </div>
   </div>
 
-  <script src="/js/app.js?v=20260922_09"></script>
+  <script src="/js/app.js?v=20260922_10"></script>
   <script>
     // Ensure startNewEnrollment is directly available on window
     if (!window.startNewEnrollment) {
@@ -888,6 +996,8 @@
           var el = document.getElementById(id);
           if (el) { el.value = ''; el.defaultValue = ''; el.removeAttribute('value'); }
         });
+        var stateSelect = document.getElementById('landState');
+        if (stateSelect) stateSelect.selectedIndex = 0;
         var allInputs = document.querySelectorAll('#enrollmentForm input');
         allInputs.forEach(function(inp) {
           if (inp.type !== 'radio' && inp.type !== 'submit' && inp.type !== 'button') {

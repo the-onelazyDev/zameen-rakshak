@@ -71,6 +71,7 @@ async function handleEnrollmentSubmit(e) {
   const applicantName = document.getElementById('applicantName').value.trim();
   const applicantPhone = document.getElementById('applicantPhone').value.trim();
   const applicantEmail = document.getElementById('applicantEmail').value.trim();
+  const landState = document.getElementById('landState') ? document.getElementById('landState').value.trim() : 'उत्तर प्रदेश (Uttar Pradesh)';
   const landDistrict = document.getElementById('landDistrict').value.trim();
   const landTehsil = document.getElementById('landTehsil').value.trim();
   const landVillage = document.getElementById('landVillage').value.trim();
@@ -127,8 +128,8 @@ async function handleEnrollmentSubmit(e) {
   setRcpt('rcptGata', `गाटा #${landKhasra}`);
   setRcpt('rcptVillage', landVillage);
   setRcpt('rcptTehsil', landTehsil);
-  setRcpt('rcptDistrict', `${landDistrict} (उत्तर प्रदेश)`);
-  setRcpt('rcptLocation', `${landVillage}, ${landTehsil} (${landDistrict})`);
+  setRcpt('rcptDistrict', `${landDistrict} (${landState})`);
+  setRcpt('rcptLocation', `${landVillage}, ${landTehsil} (${landDistrict}, ${landState})`);
   setRcpt('rcptPlan', activePlan === 'RESIDENT_2999' 
     ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
     : '$120 / Year (NRI Overseas Land Guard)');
@@ -158,6 +159,7 @@ async function handleEnrollmentSubmit(e) {
       customerName: applicantName,
       phone: applicantPhone,
       email: applicantEmail,
+      state: landState,
       district: landDistrict,
       tehsil: landTehsil,
       village: landVillage,
@@ -165,7 +167,7 @@ async function handleEnrollmentSubmit(e) {
       plan: planName,
       amount: amount,
       utr: utr,
-      notes: `Email: ${applicantEmail} | Registered via Official Citizen Portal`
+      notes: `State: ${landState} | Email: ${applicantEmail} | Registered via Official Citizen Portal`
     })
   }).then(res => res.json()).then(data => {
     if (data && data.success && data.order && data.order.id) {
@@ -213,6 +215,11 @@ function clearEnrollmentForm() {
       el.removeAttribute('value');
     }
   });
+
+  const stateSelect = document.getElementById('landState');
+  if (stateSelect) {
+    stateSelect.selectedIndex = 0;
+  }
 
   setFormPlan('RESIDENT_2999');
 }

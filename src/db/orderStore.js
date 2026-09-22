@@ -36,6 +36,7 @@ function saveOrders(data) {
 function createOrder({
   customerName = 'Landowner',
   phone,
+  state = 'Uttar Pradesh',
   district,
   tehsil,
   village,
@@ -54,6 +55,7 @@ function createOrder({
     customer_name: customerName,
     phone: phone.replace(/[^0-9+]/g, ''),
     parcel: {
+      state: state || 'Uttar Pradesh',
       district: district || 'Unknown',
       tehsil: tehsil || 'Unknown',
       village: village || 'Unknown',

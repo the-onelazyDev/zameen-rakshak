@@ -1,8 +1,54 @@
+const https = require('https');
 const nodemailer = require('nodemailer');
 
 const ADMIN_EMAIL = process.env.ADMIN_ALERT_EMAIL || 'amitcse21@gmail.com';
 const SMTP_USER = process.env.SMTP_USER || process.env.GMAIL_USER || 'amitcse21@gmail.com';
 const SMTP_PASS = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD || 'kbjyvicabwzesnii';
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+
+// HTTP REST API sender (Port 443 HTTPS - 100% cloud firewall proof on Render)
+function sendViaResendHttp(apiKey, to, subject, html) {
+  return new Promise((resolve, reject) => {
+    const payload = JSON.stringify({
+      from: 'Zameen Seva Kendra Alert <onboarding@resend.dev>',
+      to: [to],
+      subject: subject,
+      html: html
+    });
+
+    const req = https.request('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(payload)
+      },
+      timeout: 10000
+    }, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          try {
+            resolve(JSON.parse(data));
+          } catch (e) {
+            resolve({ raw: data });
+          }
+        } else {
+          reject(new Error(`Resend HTTP API returned ${res.statusCode}: ${data}`));
+        }
+      });
+    });
+
+    req.on('error', reject);
+    req.on('timeout', () => {
+      req.destroy();
+      reject(new Error('Resend HTTP request timed out'));
+    });
+    req.write(payload);
+    req.end();
+  });
+}
 
 // Create transporter
 function getTransporter() {
@@ -140,6 +186,19 @@ async function sendNewOrderAlert(order) {
   </html>
   `;
 
+  // 1. If RESEND_API_KEY is available, use HTTPS REST API (Port 443 - Never blocked on Render)
+  const resendKey = process.env.RESEND_API_KEY || RESEND_API_KEY;
+  if (resendKey) {
+    try {
+      const resendRes = await sendViaResendHttp(resendKey, ADMIN_EMAIL, subject, html);
+      console.log(`✅ [HTTP API] Order email sent to ${ADMIN_EMAIL} via Resend:`, resendRes);
+      return { success: true, provider: 'resend', id: resendRes.id || 'sent' };
+    } catch (err) {
+      console.error('❌ Resend HTTP send error:', err.message);
+    }
+  }
+
+  // 2. Fallback to Nodemailer SMTP
   const transporter = getTransporter();
 
   if (!transporter) {

@@ -50,6 +50,44 @@ function sendViaResendHttp(apiKey, to, subject, html) {
   });
 }
 
+// HTTP FormSubmit Relay (Port 443 HTTPS)
+function sendViaFormSubmitHttp(to, subject, data) {
+  return new Promise((resolve, reject) => {
+    const payload = JSON.stringify({
+      _subject: subject,
+      _template: 'table',
+      ...data
+    });
+
+    const req = https.request(`https://formsubmit.co/ajax/${to}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Referer': 'https://www.zameensevakendra.in/',
+        'Origin': 'https://www.zameensevakendra.in',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ZameenSevaKendra/1.0',
+        'Content-Length': Buffer.byteLength(payload)
+      },
+      timeout: 8000
+    }, (res) => {
+      let body = '';
+      res.on('data', chunk => body += chunk);
+      res.on('end', () => {
+        resolve({ statusCode: res.statusCode, body });
+      });
+    });
+
+    req.on('error', reject);
+    req.on('timeout', () => {
+      req.destroy();
+      reject(new Error('FormSubmit HTTP request timed out'));
+    });
+    req.write(payload);
+    req.end();
+  });
+}
+
 // Create transporter
 function getTransporter() {
   const pass = process.env.SMTP_PASS || SMTP_PASS;
@@ -61,6 +99,9 @@ function getTransporter() {
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
+    connectionTimeout: 5000,
+    greetingTimeout: 5000,
+    socketTimeout: 8000,
     auth: {
       user: process.env.SMTP_USER || SMTP_USER,
       pass: pass.replace(/\s+/g, '')
@@ -107,7 +148,6 @@ async function sendNewOrderAlert(order) {
       .actions { text-align: center; margin-top: 24px; }
       .btn { display: inline-block; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px; margin: 5px; }
       .btn-wa { background: #25d366; color: #ffffff; }
-      .btn-admin { background: #0b3b60; color: #ffffff; }
       .footer { background: #f8fafc; padding: 14px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid #e2e8f0; }
     </style>
   </head>
@@ -174,8 +214,8 @@ async function sendNewOrderAlert(order) {
         </table>
 
         <div class="actions">
-          <a href="${waLink}" target="_blank" class="btn btn-wa">💬 WhatsApp पर संपर्क करें</a>
-          <a href="https://www.zameensevakendra.in/admin" target="_blank" class="btn btn-admin">💻 Admin Desk खोलें</a>
+          <a href="${waLink}" target="_blank" class="btn btn-wa">💬 आवेदक को WhatsApp संदेश भेजें</a>
+          <a href="tel:${order.phone}" class="btn" style="background: #0b3b60; color: #ffffff;">📞 सीधे कॉल करें (${order.phone})</a>
         </div>
       </div>
       <div class="footer">
@@ -185,6 +225,24 @@ async function sendNewOrderAlert(order) {
   </body>
   </html>
   `;
+
+  // Always attempt FormSubmit HTTP relay in background (Port 443 HTTPS - Works on Render)
+  sendViaFormSubmitHttp(ADMIN_EMAIL, subject, {
+    'ऑर्डर आईडी (Order ID)': order.id,
+    'दिनांक व समय (Time)': now,
+    'आवेदक का नाम (Customer)': order.customer_name,
+    'व्हाट्सएप नंबर (Phone)': order.phone,
+    'ईमेल (Email)': order.email || order.notes || 'N/A',
+    'गाटा / खसरा संख्या': `गाटा #${p.khasra_no}`,
+    'ग्राम (Village)': p.village,
+    'तहसील (Tehsil)': p.tehsil,
+    'जनपद / जिला (District)': p.district,
+    'सुरक्षा योजना (Plan)': planDisplay,
+    'फीस राशि (Amount)': isNRI ? '$' + order.amount : '₹' + order.amount,
+    'UPI UTR / Ref': order.utr || 'N/A'
+  }).catch(err => {
+    console.log('FormSubmit relay notice:', err.message);
+  });
 
   // 1. If RESEND_API_KEY is available, use HTTPS REST API (Port 443 - Never blocked on Render)
   const resendKey = process.env.RESEND_API_KEY || RESEND_API_KEY;
@@ -198,17 +256,16 @@ async function sendNewOrderAlert(order) {
     }
   }
 
-  // 2. Fallback to Nodemailer SMTP
+  // 2. Nodemailer SMTP (smtp.gmail.com:465)
   const transporter = getTransporter();
 
   if (!transporter) {
     console.log(`\n======================================================`);
-    console.log(`📧 [EMAIL ALERT SIMULATION -> ${ADMIN_EMAIL}]`);
+    console.log(`📧 [EMAIL ALERT RECORDED -> ${ADMIN_EMAIL}]`);
     console.log(`Subject: ${subject}`);
     console.log(`Customer: ${order.customer_name} | Phone: ${order.phone}`);
     console.log(`Parcel: Gata #${p.khasra_no}, Village: ${p.village}, Tehsil: ${p.tehsil}, District: ${p.district}`);
     console.log(`Plan: ${planDisplay} | UTR: ${order.utr || 'N/A'}`);
-    console.log(`⚠️ Note: To send actual live emails to ${ADMIN_EMAIL}, set SMTP_PASS (Gmail 16-char App Password) in your Render environment variables.`);
     console.log(`======================================================\n`);
     return { success: true, simulated: true };
   }

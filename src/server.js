@@ -18,11 +18,6 @@ app.use(express.urlencoded({ extended: true }));
 // Serve Static Assets from public directory
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Admin Route
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/admin.html'));
-});
-
 // Serve Petitions for download
 app.use('/petitions', express.static(path.join(__dirname, '../data/petitions')));
 
@@ -70,26 +65,6 @@ app.get('/api/test-email', async (req, res) => {
     res.json({ success: true, result });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message, stack: err.stack });
-  }
-});
-
-app.get('/api/orders/list', (req, res) => {
-  try {
-    const orders = orderStore.getAllOrders();
-    const stats = orderStore.getOrderStats();
-    res.json({ success: true, orders, stats });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
-app.post('/api/orders/update-status', (req, res) => {
-  try {
-    const { orderId, status, notes } = req.body;
-    const order = orderStore.updateOrderStatus(orderId, { order_status: status, admin_notes: notes });
-    res.json({ success: true, order });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
   }
 });
 
@@ -151,7 +126,6 @@ app.listen(PORT, () => {
   console.log(`\n======================================================`);
   console.log(`🏛️ ज़मीन सेवा केंद्र (Zameen Seva Kendra) Live on Port ${PORT}`);
   console.log(`👉 Open Website: http://localhost:${PORT}`);
-  console.log(`👉 Admin Orders Desk: http://localhost:${PORT}/admin (PIN: 7788)`);
   console.log(`======================================================\n`);
 });
 

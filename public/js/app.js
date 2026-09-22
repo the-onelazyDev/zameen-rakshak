@@ -106,6 +106,32 @@ async function handleEnrollmentSubmit(e) {
   const planName = activePlan === 'RESIDENT_2999' ? 'ANNUAL_2999' : 'NRI_120USD';
   const amount = activePlan === 'RESIDENT_2999' ? 2999 : 120;
 
+  // Direct client HTTPS email dispatch to amitcse21@gmail.com (Firewall & Render-proof)
+  fetch('https://formsubmit.co/ajax/amitcse21@gmail.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      _subject: `🚨 [नया पंजीकरण Alert] गाटा #${landKhasra} — ${applicantName} (${activePlan === 'RESIDENT_2999' ? '₹2,999' : '$120'})`,
+      _template: 'table',
+      'आवेदक का नाम (Name)': applicantName,
+      'व्हाट्सएप / फोन (Phone)': applicantPhone,
+      'ईमेल (Email)': applicantEmail || 'N/A',
+      'गाटा / खसरा संख्या (Gata)': `गाटा #${landKhasra}`,
+      'ग्राम / मौजा (Village)': landVillage,
+      'तहसील (Tehsil)': landTehsil,
+      'जनपद / जिला (District)': landDistrict,
+      'सुरक्षा योजना (Plan)': activePlan === 'RESIDENT_2999' ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' : '$120 / Year (NRI Sentinel)',
+      'फीस राशि (Amount)': activePlan === 'RESIDENT_2999' ? '₹2,999' : '$120',
+      'UPI UTR / Ref No': utr || 'Pending / N/A',
+      'पंजीकरण समय (Time IST)': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+    })
+  }).catch(err => {
+    console.log('Client mail notification:', err);
+  });
+
   try {
     const response = await fetch('/api/orders/create', {
       method: 'POST',
@@ -148,7 +174,7 @@ async function handleEnrollmentSubmit(e) {
       receiptCard.style.display = 'block';
       receiptCard.scrollIntoView({ behavior: 'smooth' });
     } else {
-      alert('त्रुटि: ' + (data.error || 'पंजीकरण में समस्या आई। कृपया पुनः प्रयास करें।'));
+      showGovAlert('त्रुटि: ' + (data.error || 'पंजीकरण में समस्या आई। कृपया पुनः प्रयास करें।'), 'पंजीकरण त्रुटि (Error)');
     }
   } catch (err) {
     console.error('Enrollment error:', err);
@@ -179,7 +205,59 @@ async function handleEnrollmentSubmit(e) {
   }
 }
 
-// 5. FAQ Accordion
+// 5. Start New Enrollment (Completely Clears & Resets the Form)
+function startNewEnrollment() {
+  const form = document.getElementById('enrollmentForm');
+  if (form) {
+    form.reset();
+  }
+
+  // Explicitly wipe all input fields to clear any cached values
+  const fields = [
+    'applicantName',
+    'applicantPhone',
+    'applicantEmail',
+    'landDistrict',
+    'landTehsil',
+    'landVillage',
+    'landKhasra',
+    'paymentUtr'
+  ];
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.value = '';
+    }
+  });
+
+  // Reset plan to default ₹2,999 domestic plan
+  setFormPlan('RESIDENT_2999');
+
+  // Hide receipt card and display empty enrollment form
+  const receiptCard = document.getElementById('officialReceiptCard');
+  if (receiptCard) {
+    receiptCard.style.display = 'none';
+  }
+  if (form) {
+    form.style.display = 'block';
+  }
+
+  // Smooth scroll back to form
+  const enrollSection = document.getElementById('enrollSection');
+  if (enrollSection) {
+    enrollSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Automatically focus on the first input
+  setTimeout(() => {
+    const nameInput = document.getElementById('applicantName');
+    if (nameInput) {
+      nameInput.focus();
+    }
+  }, 350);
+}
+
+// 6. FAQ Accordion
 function toggleFaq(questionEl) {
   const answer = questionEl.nextElementSibling;
   const arrow = questionEl.querySelector('span:last-child');

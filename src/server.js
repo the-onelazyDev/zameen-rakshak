@@ -12,14 +12,62 @@ const { sendNewOrderAlert } = require('./notifications/emailNotifier');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Serve root with dynamic absolute OpenGraph URLs based on incoming request host
+app.get('/', (req, res) => {
+  try {
+    const protocol = req.headers['x-forwarded-proto'] || (req.secure ? 'https' : 'http');
+    const host = req.get('host') || 'www.zameensevakendra.in';
+    const baseUrl = host.includes('zameensevakendra.in') ? 'https://www.zameensevakendra.in' : `${protocol}://${host}`;
+    
+    let html = fs.readFileSync(path.join(__dirname, '../public/index.html'), 'utf8');
+    if (!host.includes('www.zameensevakendra.in')) {
+      html = html.replace(/https:\/\/www\.zameensevakendra\.in/g, baseUrl);
+    }
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(html);
+  } catch (err) {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+  }
+});
 
 // Serve Static Assets from public directory
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Serve Petitions for download
 app.use('/petitions', express.static(path.join(__dirname, '../data/petitions')));
+
+// Endpoint to save generated OpenGraph preview images
+app.post('/api/save-og-image', (req, res) => {
+  try {
+    const { image1200, image600 } = req.body;
+    if (!image1200) {
+      return res.status(400).json({ success: false, error: 'image1200 is required' });
+    }
+    const cleanB64_1200 = image1200.replace(/^data:image\/\w+;base64,/, '');
+    const buf1200 = Buffer.from(cleanB64_1200, 'base64');
+    fs.writeFileSync(path.join(__dirname, '../public/assets/og_share_preview.jpg'), buf1200);
+
+    let size600 = 0;
+    if (image600) {
+      const cleanB64_600 = image600.replace(/^data:image\/\w+;base64,/, '');
+      const buf600 = Buffer.from(cleanB64_600, 'base64');
+      fs.writeFileSync(path.join(__dirname, '../public/assets/logo_square_og.jpg'), buf600);
+      size600 = buf600.length;
+    }
+
+    res.json({
+      success: true,
+      message: 'OG images saved successfully',
+      size1200: buf1200.length,
+      size600
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
 
 // --- ORDERS API (For Concierge Model) ---
 app.post('/api/orders/create', (req, res) => {

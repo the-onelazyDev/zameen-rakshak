@@ -44,6 +44,12 @@ app.get(['/robots.txt', '//robots.txt'], (req, res) => {
   res.sendFile(path.join(__dirname, '../public/robots.txt'));
 });
 
+// Explicit Favicon endpoint for Googlebot and search crawlers
+app.get(['/favicon.ico', '//favicon.ico'], (req, res) => {
+  res.header('Content-Type', 'image/x-icon');
+  res.sendFile(path.join(__dirname, '../public/favicon.ico'));
+});
+
 // Lightweight Health Check & Keep-Alive endpoint (for UptimeRobot / Pingers)
 app.get(['/health', '/ping'], (req, res) => {
   res.status(200).json({ status: 'active', timestamp: new Date().toISOString(), uptime: Math.floor(process.uptime()) });

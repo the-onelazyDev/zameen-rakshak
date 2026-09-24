@@ -41,6 +41,7 @@ app.get(['/sitemap.xml', '//sitemap.xml'], (req, res) => {
 
 app.get(['/robots.txt', '//robots.txt'], (req, res) => {
   res.header('Content-Type', 'text/plain; charset=utf-8');
+  res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(__dirname, '../public/robots.txt'));
 });
 

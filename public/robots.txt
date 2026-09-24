@@ -1,10 +1,11 @@
-User-agent: *
+User-agent: Googlebot
 Allow: /
-
-# Disallow internal API endpoints & temporary generated files
 Disallow: /api/
 Disallow: /petitions/
 
-# Host and Sitemap
-Host: https://www.zameensevakendra.in
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /petitions/
+
 Sitemap: https://www.zameensevakendra.in/sitemap.xml

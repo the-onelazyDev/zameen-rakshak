@@ -12,8 +12,8 @@ const { sendNewOrderAlert } = require('./notifications/emailNotifier');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
 // Serve root with dynamic absolute OpenGraph URLs based on incoming request host
 app.get('/', (req, res) => {
@@ -42,6 +42,11 @@ app.get(['/sitemap.xml', '//sitemap.xml'], (req, res) => {
 app.get(['/robots.txt', '//robots.txt'], (req, res) => {
   res.header('Content-Type', 'text/plain; charset=utf-8');
   res.sendFile(path.join(__dirname, '../public/robots.txt'));
+});
+
+// Lightweight Health Check & Keep-Alive endpoint (for UptimeRobot / Pingers)
+app.get(['/health', '/ping'], (req, res) => {
+  res.status(200).json({ status: 'active', timestamp: new Date().toISOString(), uptime: Math.floor(process.uptime()) });
 });
 
 // Serve Static Assets from public directory
@@ -77,6 +82,83 @@ app.post('/api/save-og-image', (req, res) => {
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Endpoint to save recorded Reel video from frontend
+app.post('/api/save-reel-video', (req, res) => {
+  try {
+    const { videoBase64, format } = req.body;
+    if (!videoBase64) {
+      return res.status(400).json({ success: false, error: 'videoBase64 is required' });
+    }
+    const commaIdx = videoBase64.indexOf(',');
+    const cleanB64 = commaIdx !== -1 ? videoBase64.substring(commaIdx + 1) : videoBase64;
+    const buf = Buffer.from(cleanB64, 'base64');
+    const ext = format === 'mp4' ? 'mp4' : 'webm';
+    const downloadsDir = path.join(__dirname, '../public/downloads');
+    if (!fs.existsSync(downloadsDir)) {
+      fs.mkdirSync(downloadsDir, { recursive: true });
+    }
+    const filePath = path.join(downloadsDir, `Zameen_Seva_Kendra_Reel.${ext}`);
+    fs.writeFileSync(filePath, buf);
+
+    // Also copy directly to User's Desktop and Downloads for immediate zero-friction access
+    const os = require('os');
+    const userHome = os.homedir();
+    const desktopPath = path.join(userHome, 'Desktop', `Zameen_Seva_Kendra_Reel.${ext}`);
+    const userDownloadsPath = path.join(userHome, 'Downloads', `Zameen_Seva_Kendra_Reel.${ext}`);
+    try { fs.writeFileSync(desktopPath, buf); } catch (e) { console.warn('Could not copy to Desktop:', e.message); }
+    try { fs.writeFileSync(userDownloadsPath, buf); } catch (e) { console.warn('Could not copy to Downloads:', e.message); }
+
+    console.log(`[Reel Saved] Successfully saved ${buf.length} bytes as ${ext}. Copied to Desktop & Downloads.`);
+
+    res.json({
+      success: true,
+      message: 'Reel video saved on server and copied to Desktop/Downloads',
+      size: buf.length,
+      downloadUrl: `/api/download-reel?format=${ext}`
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Endpoint to directly download the reel video with strict Content-Disposition headers
+app.get('/api/download-reel', (req, res) => {
+  try {
+    const downloadsDir = path.join(__dirname, '../public/downloads');
+    const requestedFormat = req.query.format || 'mp4';
+    const mp4Path = path.join(downloadsDir, 'Zameen_Seva_Kendra_Reel.mp4');
+    const webmPath = path.join(downloadsDir, 'Zameen_Seva_Kendra_Reel.webm');
+
+    let targetFile = null;
+    let targetName = null;
+    let contentType = 'video/mp4';
+
+    if (requestedFormat === 'mp4' && fs.existsSync(mp4Path) && fs.statSync(mp4Path).size > 1000) {
+      targetFile = mp4Path;
+      targetName = 'Zameen_Seva_Kendra_Reel.mp4';
+      contentType = 'video/mp4';
+    } else if (fs.existsSync(mp4Path) && fs.statSync(mp4Path).size > 1000) {
+      targetFile = mp4Path;
+      targetName = 'Zameen_Seva_Kendra_Reel.mp4';
+      contentType = 'video/mp4';
+    } else if (fs.existsSync(webmPath)) {
+      targetFile = webmPath;
+      targetName = 'Zameen_Seva_Kendra_Reel.webm';
+      contentType = 'video/webm';
+    }
+
+    if (!targetFile) {
+      return res.status(404).send('Reel file not found yet. Please generate from studio.');
+    }
+
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('Content-Disposition', `attachment; filename="${targetName}"`);
+    res.download(targetFile, targetName);
+  } catch (err) {
+    res.status(500).send('Error initiating download: ' + err.message);
   }
 });
 

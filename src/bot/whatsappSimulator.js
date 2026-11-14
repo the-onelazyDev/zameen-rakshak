@@ -39,7 +39,7 @@ Please enter your **District (Zila)** name in Uttar Pradesh:
       const user = store.getUserByPhone(fromPhone);
       const parcels = store.getAllActiveParcels().filter(p => p.user_id === user?.id);
       const targetParcel = parcels[0] || { khasra_no: '241', village_name: 'Rampur' };
-      const upi = generateUpiIntentLink({ amount: 2999, parcelId: targetParcel?.id, userPhone: fromPhone });
+      const upi = generateUpiIntentLink({ amount: 1999, parcelId: targetParcel?.id, userPhone: fromPhone });
       return formatWhatsAppPaymentCard({ upiData: upi, parcelDetails: targetParcel });
     } else if (normalizedText === '3') {
       const user = store.getUserByPhone(fromPhone);
@@ -127,7 +127,7 @@ Please enter your **District (Zila)** name in Uttar Pradesh:
         baseline_snapshot: session.data.verifiedRecord
       });
 
-      const upi = generateUpiIntentLink({ amount: 2999, parcelId: parcel.id, userPhone: fromPhone });
+      const upi = generateUpiIntentLink({ amount: 1999, parcelId: parcel.id, userPhone: fromPhone });
       session.step = 'AWAITING_PAYMENT_CONFIRM';
       userSessions.set(fromPhone, session);
 

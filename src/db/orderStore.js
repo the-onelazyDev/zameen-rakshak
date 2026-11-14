@@ -62,7 +62,7 @@ function createOrder({
       khasra_no: khasraNo || 'Unknown'
     },
     plan,
-    amount: parseFloat(amount) || (plan === 'ANNUAL_2999' ? 2999 : 199),
+    amount: parseFloat(amount) || (plan === 'ANNUAL_1999' || plan === 'ANNUAL_2999' ? 1999 : 199),
     payment_status: utr ? 'PAID_VERIFYING' : 'PENDING',
     order_status: 'PENDING_REVIEW', // PENDING_REVIEW, IN_PROGRESS, COMPLETED, CANCELLED
     utr: utr.trim(),

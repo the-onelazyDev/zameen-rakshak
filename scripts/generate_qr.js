@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 async function generateQRCodes() {
-  const upiUri = 'upi://pay?pa=zameensevakendra@ybl&pn=Zameen%20Seva%20Kendra&am=2999.00&cu=INR&tn=ZameenSevaKendra_Annual_2999';
+  const upiUri = 'upi://pay?pa=zameensevakendra@ybl&pn=Zameen%20Seva%20Kendra&am=1999.00&cu=INR&tn=ZameenSevaKendra_Annual_1999';
   
   const outputPath = path.join(__dirname, '../public/assets/qr_code_clean.png');
   

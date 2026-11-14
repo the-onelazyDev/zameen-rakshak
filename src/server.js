@@ -205,8 +205,8 @@ app.get('/api/test-email', async (req, res) => {
         village: 'Kadrabad',
         khasra_no: '28MI'
       },
-      plan: 'ANNUAL_2999',
-      amount: 2999,
+      plan: 'ANNUAL_1999',
+      amount: 1999,
       utr: 'TEST_UTR_LIVE'
     };
     const result = await sendNewOrderAlert(testOrder);

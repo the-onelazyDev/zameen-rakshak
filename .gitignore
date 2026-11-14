@@ -7,3 +7,48 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 data/petitions/*.pdf
+
+# Generated Instagram Media & Post Downloads (Images & Videos)
+public/downloads/
+*.mp4
+*.webm
+*.mov
+*.mp3
+*.wav
+*.aac
+
+# Generated Post HTML Templates & Studio Files
+public/posts/
+public/play_reel.html
+public/reel_studio.html
+public/render_mp4.html
+
+# Instagram Brand Assets & Automation Scripts
+public/assets/instagram_*
+public/assets/zsk_insta_*
+
+# Media Rendering, Video/Audio Generation & Studio Scripts (Local Only)
+scripts/render_*
+scripts/generate_*
+!scripts/generate_qr.js
+scripts/make_*
+scripts/test_*
+scripts/*.txt
+scripts/*.py
+
+# Protected Website Assets (Never Ignore Logos, Favicons, Site Media)
+!public/favicon.ico
+!public/assets/favicon*
+!public/assets/apple-touch-icon*
+!public/assets/logo*
+!public/assets/govt_logo*
+!public/assets/og_share_preview*
+!public/assets/qr_code*
+!public/assets/real_khatauni*
+
+# IDE & OS temporary files
+.vscode/
+.idea/
+*.swp
+*.tmp
+

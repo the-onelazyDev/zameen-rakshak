@@ -51,7 +51,7 @@ async function runEndToEndCLI() {
   console.log('\n----------------------------------------------------------------');
   console.log('STEP 3: Generating Zero-Gateway Direct UPI Intent Link...');
   const upiData = generateUpiIntentLink({
-    amount: 2999,
+    amount: 1999,
     parcelId: parcel.id,
     userPhone: user.phone_number
   });

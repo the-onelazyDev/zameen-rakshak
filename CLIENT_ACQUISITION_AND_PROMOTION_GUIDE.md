@@ -31,6 +31,8 @@ Promotion shuru karne se pehle ye samajhna zaroori hai ki **kisko target karna h
 
 ## 📱 STEP 2: Digital Marketing & Meta Ads Strategy (Facebook & Instagram)
 
+> 💡 **Detailed Faceless Instagram & Branding Guide:** For complete profile setup, faceless reel scripts, bio options, and official institutional logo, check [INSTAGRAM_STRATEGY_AND_BRANDING_GUIDE.md](file:///d:/zameen-rakshak/INSTAGRAM_STRATEGY_AND_BRANDING_GUIDE.md).
+
 Meta Ads (FB/Insta) aapke business ke liye **#1 Customer Acquisition Engine** sabit hoga. 
 
 ### 1. Campaign Setup (Ads Manager me kya select karein):

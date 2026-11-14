@@ -13,7 +13,7 @@ const DEFAULT_PAYEE_NAME = 'Zameen Seva Kendra';
 function generateUpiIntentLink({
   vpa = DEFAULT_UPI_VPA,
   payeeName = DEFAULT_PAYEE_NAME,
-  amount = 2999,
+  amount = 1999,
   parcelId,
   userPhone
 }) {
@@ -45,7 +45,7 @@ function formatWhatsAppPaymentCard({ upiData, parcelDetails }) {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌾 *Parcel:* Gata #${parcelDetails?.khasra_no || '241'}, Gram ${parcelDetails?.village_name || 'Rampur'}
 🛡️ *Coverage:* Nightly registry checks + Instant Red Alert + Free Legal Stay Petition
-💰 *Annual Fee:* *₹${upiData.amount} / Year* (Less than ₹8/day!)
+💰 *Annual Fee:* *₹${upiData.amount} / Year* (Less than ₹5.5/day!)
 
 👉 *Tap below to Pay with any UPI App:*
 ${upiData.upiUri}

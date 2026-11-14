@@ -3,8 +3,8 @@
  * Lightweight, Clean, High-Trust Form & Plan Controller
  */
 
-// Selected Plan State: 'RESIDENT_2999' or 'NRI_120USD'
-let activePlan = 'RESIDENT_2999';
+// Selected Plan State: 'RESIDENT_1999' or 'NRI_120USD'
+let activePlan = 'RESIDENT_1999';
 
 document.addEventListener('DOMContentLoaded', () => {
   initLiveDate();
@@ -34,8 +34,8 @@ function selectPlanAndScroll(planKey) {
 
 // 3. Form Plan Switcher (Resident vs NRI)
 function setFormPlan(planKey) {
-  activePlan = planKey;
-  const labelResident = document.getElementById('labelRadio2999');
+  activePlan = (planKey === 'RESIDENT_2999') ? 'RESIDENT_1999' : planKey;
+  const labelResident = document.getElementById('labelRadio1999') || document.getElementById('labelRadio2999');
   const labelNRI = document.getElementById('labelRadioNRI');
   const radioResident = document.getElementById('radioResident');
   const radioNRI = document.getElementById('radioNRI');
@@ -43,14 +43,14 @@ function setFormPlan(planKey) {
   const boxNRI = document.getElementById('paymentBoxNRI');
   const submitBtn = document.getElementById('submitEnrollBtn');
 
-  if (planKey === 'RESIDENT_2999') {
+  if (activePlan === 'RESIDENT_1999') {
     if (labelResident) labelResident.classList.add('selected');
     if (labelNRI) labelNRI.classList.remove('selected');
     if (radioResident) radioResident.checked = true;
     if (boxDomestic) boxDomestic.style.display = 'flex';
     if (boxNRI) boxNRI.style.display = 'none';
     if (submitBtn) {
-      submitBtn.innerHTML = '<span>🛡️</span><span>भूमि सुरक्षा पंजीकरण पूर्ण करें — ₹2,999/वर्ष (Submit Enrollment)</span>';
+      submitBtn.innerHTML = '<span>🛡️</span><span>भूमि सुरक्षा पंजीकरण पूर्ण करें — ₹1,999/वर्ष (Submit Enrollment)</span>';
     }
   } else {
     if (labelResident) labelResident.classList.remove('selected');
@@ -83,9 +83,9 @@ async function handleEnrollmentSubmit(e) {
     return;
   }
 
-  if (activePlan === 'RESIDENT_2999' && !utr) {
+  if ((activePlan === 'RESIDENT_1999' || activePlan === 'RESIDENT_2999') && !utr) {
     showGovAlert(
-      'कृपया QR कोड स्कैन करके <strong>₹2,999</strong> का भुगतान करें और बैंक/UPI ऐप (GPay, PhonePe, Paytm) से प्राप्त <strong>12-अंकों का UPI UTR / Transaction No.</strong> यहाँ दर्ज करें।',
+      'कृपया QR कोड स्कैन करके <strong>₹1,999</strong> का भुगतान करें और बैंक/UPI ऐप (GPay, PhonePe, Paytm) से प्राप्त <strong>12-अंकों का UPI UTR / Transaction No.</strong> यहाँ दर्ज करें।',
       '⚠️ भुगतान सत्यापन सूचना (Payment Verification Required)',
       () => {
         const utrInput = document.getElementById('paymentUtr');
@@ -99,8 +99,8 @@ async function handleEnrollmentSubmit(e) {
   }
 
   const submitBtn = document.getElementById('submitEnrollBtn');
-  const planName = activePlan === 'RESIDENT_2999' ? 'ANNUAL_2999' : 'NRI_120USD';
-  const amount = activePlan === 'RESIDENT_2999' ? 2999 : 120;
+  const planName = (activePlan === 'RESIDENT_1999' || activePlan === 'RESIDENT_2999') ? 'ANNUAL_1999' : 'NRI_120USD';
+  const amount = (activePlan === 'RESIDENT_1999' || activePlan === 'RESIDENT_2999') ? 1999 : 120;
   const instantRegId = 'ZSK_' + new Date().getFullYear() + '_' + Math.floor(10000 + Math.random() * 90000);
 
   // 1. INSTANT UI SUCCESS FEEDBACK (0 Milliseconds - Never keep citizen waiting!)
@@ -130,11 +130,11 @@ async function handleEnrollmentSubmit(e) {
   setRcpt('rcptTehsil', landTehsil);
   setRcpt('rcptDistrict', `${landDistrict} (${landState})`);
   setRcpt('rcptLocation', `${landVillage}, ${landTehsil} (${landDistrict}, ${landState})`);
-  setRcpt('rcptPlan', activePlan === 'RESIDENT_2999' 
-    ? '₹2,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
+  setRcpt('rcptPlan', (activePlan === 'RESIDENT_1999' || activePlan === 'RESIDENT_2999') 
+    ? '₹1,999 / वर्ष (भारतीय निवासी सुरक्षा कवच)' 
     : '$120 / Year (NRI Overseas Land Guard)');
-  setRcpt('rcptAmount', activePlan === 'RESIDENT_2999' ? '₹2,999.00' : '$120.00');
-  setRcpt('rcptUtr', utr || (activePlan === 'RESIDENT_2999' ? 'Pending Bank Verification' : 'NRI Overseas Verification'));
+  setRcpt('rcptAmount', (activePlan === 'RESIDENT_1999' || activePlan === 'RESIDENT_2999') ? '₹1,999.00' : '$120.00');
+  setRcpt('rcptUtr', utr || ((activePlan === 'RESIDENT_1999' || activePlan === 'RESIDENT_2999') ? 'Pending Bank Verification' : 'NRI Overseas Verification'));
 
   // Switch display immediately
   document.getElementById('enrollmentForm').style.display = 'none';
@@ -221,7 +221,7 @@ function clearEnrollmentForm() {
     stateSelect.selectedIndex = 0;
   }
 
-  setFormPlan('RESIDENT_2999');
+  setFormPlan('RESIDENT_1999');
 }
 
 // 6. Start New Enrollment (Completely Clears & Resets the Form)
@@ -385,11 +385,11 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-// URL Parameter Handling on Load (?selectedPlan=RESIDENT_2999 or ?selectedPlan=NRI_120USD)
+// URL Parameter Handling on Load (?selectedPlan=RESIDENT_1999 or ?selectedPlan=NRI_120USD)
 try {
   const urlParams = new URLSearchParams(window.location.search);
   const planParam = urlParams.get('selectedPlan');
-  if (planParam && (planParam === 'RESIDENT_2999' || planParam === 'NRI_120USD')) {
+  if (planParam && (planParam === 'RESIDENT_1999' || planParam === 'RESIDENT_2999' || planParam === 'NRI_120USD')) {
     setFormPlan(planParam);
   }
   if (window.location.hash) {
